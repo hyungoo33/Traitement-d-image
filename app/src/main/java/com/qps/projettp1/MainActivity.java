@@ -1012,8 +1012,8 @@ public class MainActivity extends AppCompatActivity {
                     compteur++;
                 }
             }
-            if(filtre == 0)trueGray =(Math.abs((int)newGray));
-            if(filtre == 1)trueGray =(Math.abs((int)newGray));
+            if(filtre == 0)trueGray =((int)newGray + 3*255)/6;
+            if(filtre == 1)trueGray =((int) newGray + 4 * 255) / 8;
             newPixels[i] = (0xFF << 24) | (trueGray << 16) | (trueGray << 8) | trueGray;
 
         }
