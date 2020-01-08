@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ProjetTP1</string>
+    <string name="gray">Gray</string>
+    <string name="histogram_text">show histogram</string>
 </resources>

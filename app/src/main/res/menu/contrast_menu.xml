@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/gray"
+        android:title="@string/gray"/>
+    <group android:id="@+id/color">
+        <item android:id="@+id/colorize"
+            android:title="Colorize "   />
+
+        <item android:id="@+id/isolate"
+            android:title="Isolate"  />
+    </group>
+    <group android:id="@+id/gray_contrast">
+        <item android:id="@+id/contrast_augment"
+            android:title="Contrast + "   />
+
+        <item android:id="@+id/contrast_decrease"
+            android:title="Contrast - "  />
+    </group>
+    <group android:id="@+id/color_contrast">
+        <item android:id="@+id/contrast_RGB"
+            android:title="Contrast RGB ">
+            <menu android:id="@+id/sub_menu_contrast_RGB">
+                <item android:id="@+id/contrast_R"
+                    android:title="red"   />
+                <item android:id="@+id/contrast_G"
+                    android:title="green"   />
+                <item android:id="@+id/contrast_B"
+                    android:title="blue"   />
+            </menu>
+        </item>
+
+        <item android:id="@+id/contrast_HSV"
+            android:title="Contrast HSV "  >
+            <menu android:id="@+id/sub_menu_contrast_HSV">
+                <item android:id="@+id/contrast_H"
+                    android:title="hue"   />
+                <item android:id="@+id/contrast_S"
+                    android:title="saturation"   />
+                <item android:id="@+id/contrast_V"
+                    android:title="value"   />
+            </menu>
+
+        </item>
+    </group>
+    <item android:id="@+id/egalise"
+        android:title="Egalise"/>
+
+    <group android:id="@+id/color_egalise">
+        <item android:id="@+id/egalise_RGB"
+            android:title="Egalise RGB " >
+            <menu android:id="@+id/sub_menu_egalise_RGB">
+                <item android:id="@+id/egalise_R"
+                    android:title="red"   />
+                <item android:id="@+id/egalise_G"
+                    android:title="green"   />
+                <item android:id="@+id/egalise_B"
+                    android:title="blue"   />
+            </menu>
+        </item>
+
+        <item android:id="@+id/egalise_HSV"
+            android:title="Egalise HSV "  >
+            <menu android:id="@+id/sub_menu_egalise_HSV">
+                <item android:id="@+id/egalise_H"
+                    android:title="hue"   />
+                <item android:id="@+id/egalise_S"
+                    android:title="saturation"   />
+                <item android:id="@+id/egalise_V"
+                    android:title="value"   />
+            </menu>
+
+
+        </item>
+
+    </group>
+    <item android:id="@+id/convolution"
+        android:title="Convolution">
+        <menu android:id="@+id/sub_menu_convolution">
+            <item android:id="@+id/moyenneur"
+                android:title="Moyenneur"   />
+            <item android:id="@+id/gauss5"
+                android:title="Gauss5"   />
+            <item android:id="@+id/detectHoriP"
+                android:title="détection horizontale Prewitt"   />
+            <item android:id="@+id/detectVertP"
+                android:title="détection verticale Prewitt"   />
+
+            <item android:id="@+id/detectHoriS"
+                android:title="détection horizontale Sobel"   />
+            <item android:id="@+id/detectVertS"
+                android:title="détection verticale Sobel"   />
+
+            <item android:id="@+id/contourPrewitt"
+                android:title="détection contour Prewitt"   />
+            <item android:id="@+id/contourSobel"
+                android:title="détection contour Sobel"   />
+
+            <item android:id="@+id/laplace4"
+                android:title="Laplace4"   />
+            <item android:id="@+id/laplace8"
+                android:title="Laplace8"   />
+
+
+        </menu>
+
+    </item>
+
+
+</menu>
