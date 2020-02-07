@@ -128,7 +128,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file:///autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement-d-image/app/src/main/java/com/qps/projettp1/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3495">
+            <state relative-caret-position="285">
               <caret line="91" lean-forward="true" selection-start-line="91" selection-end-line="91" />
               <folding>
                 <element signature="e#1546#1790#0" expanded="true" />
@@ -395,7 +395,7 @@
       <window_info anchor="bottom" id="Event Log" order="4" sideWeight="0.50053364" side_tool="true" weight="0.97140133" />
       <window_info anchor="bottom" id="Build" order="5" weight="0.21399178" />
       <window_info anchor="bottom" id="Android Profiler" order="6" sideWeight="0.4994664" weight="0.47778982" />
-      <window_info active="true" anchor="bottom" id="Run" order="7" visible="true" weight="0.33333334" />
+      <window_info active="true" anchor="bottom" id="Run" order="7" visible="true" weight="0.33031303" />
       <window_info anchor="bottom" id="Debug" order="8" />
       <window_info anchor="bottom" id="Find" order="9" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
@@ -405,6 +405,10 @@
       <window_info anchor="right" id="Palette&#9;" order="4" />
       <window_info anchor="right" id="Preview" order="5" weight="0.32977587" />
     </layout>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Application des filtres sur les images capturer et les images de la galerie." />
+    <option name="LAST_COMMIT_MESSAGE" value="Application des filtres sur les images capturer et les images de la galerie." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file:///autofs/unitytravail/travail/hwalle/ProjetTP1/app/src/main/res/layout/activity_main.xml" />
@@ -466,7 +470,7 @@
     </entry>
     <entry file="file:///autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement-d-image/app/src/main/java/com/qps/projettp1/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3495">
+        <state relative-caret-position="285">
           <caret line="91" lean-forward="true" selection-start-line="91" selection-end-line="91" />
           <folding>
             <element signature="e#1546#1790#0" expanded="true" />
