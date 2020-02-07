@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -18,6 +19,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.view.View.OnClickListener;
 
+import java.io.IOException;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -73,7 +75,13 @@ public class MainActivity extends AppCompatActivity {
      protected void onActivityResult(int requestCode, int resultCode,@Nullable Intent data){
         super.onActivityResult(requestCode,resultCode,data);
         if(resultCode == RESULT_OK && requestCode == 1000){
-            iv.setImageURI(data.getData());
+            Uri imageUri = data.getData();
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(),imageUri);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            iv.setImageURI(imageUri);
         }
         if(requestCode == 0){
             bitmap = (Bitmap ) data.getExtras().get("data");
@@ -95,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    private void toGrayFast(Bitmap bp){
+    private Bitmap toGrayFast(Bitmap bp){
 
         int[] pixels = new int[bp.getHeight()*bp.getWidth()];
         bp.getPixels(pixels, 0, bp.getWidth(), 0, 0, bp.getWidth(), bp.getHeight());
@@ -107,12 +115,14 @@ public class MainActivity extends AppCompatActivity {
             int gray = (int)(0.3*red + 0.59*green + 0.11*blue);
             pixels[i] = (alpha << 24) | (gray << 16) | (gray << 8) | gray;
         }
-        bp.setPixels(pixels, 0, bp.getWidth(), 0, 0, bp.getWidth(), bp.getHeight());
+        Bitmap result = Bitmap.createBitmap(bp.getWidth(),bp.getHeight(),Bitmap.Config.ARGB_8888);
+        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
+        return result;
     }
 
 
 
-    private void colorize(Bitmap bmp){
+    private Bitmap colorize(Bitmap bmp){
         int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
         float[] hsv = new float[3];
         int hue = new Random().nextInt(360);
@@ -126,12 +136,14 @@ public class MainActivity extends AppCompatActivity {
             pixels[i]=HSVtoRGB(hsv);
 
         }
-        bmp.setPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
+        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
+        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
+        return result;
     }
 
 
 
-    private void isolateColor(Bitmap bmp){
+    private Bitmap isolateColor(Bitmap bmp){
         int range = 30;
         int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
         float[] hsv = new float[3];
@@ -156,7 +168,9 @@ public class MainActivity extends AppCompatActivity {
                     pixels[i] = (alpha << 24) | (gray << 16) | (gray << 8) | gray;
                 }
         }
-        bmp.setPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
+        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
+        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
+        return result;
     }
 
     //----------------------------------------------------------
@@ -338,7 +352,7 @@ public class MainActivity extends AppCompatActivity {
     //--------------------------------------------------------------
 
 
-    private void contrastAugment(Bitmap bmp){
+    private Bitmap contrastAugment(Bitmap bmp){
 
         int[] dynamique = dynamique(bmp);
         int min = dynamique[0];
@@ -360,10 +374,12 @@ public class MainActivity extends AppCompatActivity {
             int newGray = LUT[gray];
             pixels[i] = (alpha << 24) | (newGray << 16) | (newGray << 8) | newGray;
         }
-        bmp.setPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
+        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
+        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
+        return result;
     }
 
-    private void contrastDecrease(Bitmap bmp,int range){
+    private Bitmap contrastDecrease(Bitmap bmp,int range){
         int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
         int[] dynamique = dynamique(bmp);
         int min = dynamique[0];
@@ -382,7 +398,9 @@ public class MainActivity extends AppCompatActivity {
             int newGray = LUT[gray];
             pixels[i] = (alpha << 24) | (newGray << 16) | (newGray << 8) | newGray;
         }
-        bmp.setPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
+        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
+        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
+        return result;
     }
 
     //----------------------------------------
@@ -392,7 +410,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    private void contrastAugmentR(Bitmap bmp){
+    private Bitmap contrastAugmentR(Bitmap bmp){
         int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
         int[] dynamique = dynamiqueRGB(bmp);
         int minR = dynamique[0];
@@ -411,9 +429,11 @@ public class MainActivity extends AppCompatActivity {
             int newRed = LUTR[red];
             pixels[i] = (alpha << 24) | (newRed << 16) | (green << 8) | blue;
         }
-        bmp.setPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
+        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
+        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
+        return result;
     }
-    private void contrastAugmentG(Bitmap bmp){
+    private Bitmap contrastAugmentG(Bitmap bmp){
         int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
         int[] dynamique = dynamiqueRGB(bmp);
         int minG = dynamique[2];
@@ -432,9 +452,11 @@ public class MainActivity extends AppCompatActivity {
             int newGreen = LUTG[green];
             pixels[i] = (alpha << 24) | (red << 16) | (newGreen << 8) | blue;
         }
-        bmp.setPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
+        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
+        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
+        return result;
     }
-    private void contrastAugmentB(Bitmap bmp){
+    private Bitmap contrastAugmentB(Bitmap bmp){
         int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
         int[] dynamique = dynamiqueRGB(bmp);
         int minB = dynamique[4];
@@ -453,10 +475,12 @@ public class MainActivity extends AppCompatActivity {
             int newBlue = LUTB[blue];
             pixels[i] = (alpha << 24) | (red << 16) | (green << 8) | newBlue;
         }
-        bmp.setPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
+        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
+        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
+        return result;
     }
 
-    private void contrastAugmentRGB(Bitmap bmp){                                                    //function to augment the contrast of R,G, and B at once
+    private Bitmap contrastAugmentRGB(Bitmap bmp){                                                    //function to augment the contrast of R,G, and B at once
         int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
         int[] dynamique = dynamiqueRGB(bmp);
         int minR = dynamique[0];
@@ -489,7 +513,9 @@ public class MainActivity extends AppCompatActivity {
             int newBlue = LUTB[blue];
             pixels[i] = (alpha << 24) | (newRed << 16) | (newGreen << 8) | newBlue;
         }
-        bmp.setPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
+        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
+        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
+        return result;
     }
 
 
@@ -501,7 +527,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    private void contrastAugmentH(Bitmap bmp){
+    private Bitmap contrastAugmentH(Bitmap bmp){
 
         float[] hsv = new float[3];
         int[] dyn = dynamiqueHSV(bmp);
@@ -523,9 +549,11 @@ public class MainActivity extends AppCompatActivity {
             hsv[0] = (LUTH[(int)(hsv[0])]);
             pixels[i] = HSVtoRGB(hsv);
         }
-        bmp.setPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
+        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
+        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
+        return result;
     }
-    private void contrastAugmentS(Bitmap bmp){
+    private Bitmap contrastAugmentS(Bitmap bmp){
 
         float[] hsv = new float[3];
         int[] dyn = dynamiqueHSV(bmp);
@@ -547,9 +575,11 @@ public class MainActivity extends AppCompatActivity {
             hsv[1] = (LUTS[(int)(hsv[1]*359.0f)]/359.0f);
             pixels[i] = HSVtoRGB(hsv);
         }
-        bmp.setPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
+        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
+        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
+        return result;
     }
-    private void contrastAugmentV(Bitmap bmp){
+    private Bitmap contrastAugmentV(Bitmap bmp){
 
         float[] hsv = new float[3];
         int[] dyn = dynamiqueHSV(bmp);
@@ -571,10 +601,12 @@ public class MainActivity extends AppCompatActivity {
             hsv[2] = (LUTV[(int)(hsv[2]*359.0f)]/359.0f);
             pixels[i] = HSVtoRGB(hsv);
         }
-        bmp.setPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
+        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
+        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
+        return result;
     }
 
-    private void contrastAugmentHSV(Bitmap bmp){                                                    //function to augment the contrast of H,S and V at once
+    private Bitmap contrastAugmentHSV(Bitmap bmp){                                                    //function to augment the contrast of H,S and V at once
 
         float[] hsv = new float[3];
         int[] dyn = dynamiqueHSV(bmp);
@@ -610,7 +642,9 @@ public class MainActivity extends AppCompatActivity {
             hsv[2] = (LUTV[(int)(hsv[2]*359.0f)]/359.0f);
             pixels[i] = HSVtoRGB(hsv);
         }
-        bmp.setPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
+        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
+        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
+        return result;
     }
 
 
@@ -622,7 +656,7 @@ public class MainActivity extends AppCompatActivity {
     //--------------------------------------------------------------
 
 
-    private void equalizate(Bitmap bmp){
+    private Bitmap equalizate(Bitmap bmp){
         long N = bmp.getWidth()*bmp.getHeight();
         int[] h = histogram(bmp);
         int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
@@ -644,7 +678,9 @@ public class MainActivity extends AppCompatActivity {
             long newGray = C[gray]*255/N;
             pixels[i]= (alpha << 24) | ((int)newGray << 16) | ((int)newGray << 8) | (int)newGray;
         }
-        bmp.setPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
+        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
+        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
+        return result;
     }
 
 
@@ -653,7 +689,7 @@ public class MainActivity extends AppCompatActivity {
     //----------------------------------------
 
 
-    private void equalizationR(Bitmap bmp){
+    private Bitmap equalizationR(Bitmap bmp){
         int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
         long N = bmp.getWidth()*bmp.getHeight();
         int[][] h = histogramRGB(bmp);
@@ -674,9 +710,11 @@ public class MainActivity extends AppCompatActivity {
             pixels[i] = (alpha << 24) | ((int)newRed << 16) | (green << 8) | blue;
 
         }
-        bmp.setPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
+        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
+        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
+        return result;
     }
-    private void equalizationG(Bitmap bmp){
+    private Bitmap equalizationG(Bitmap bmp){
         int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
         long N = bmp.getWidth()*bmp.getHeight();
         int[][] h = histogramRGB(bmp);
@@ -697,9 +735,11 @@ public class MainActivity extends AppCompatActivity {
             pixels[i] = (alpha << 24) | (red << 16) | ((int)newGreen << 8) | blue;
 
         }
-        bmp.setPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
+        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
+        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
+        return result;
     }
-    private void equalizationB(Bitmap bmp){
+    private Bitmap equalizationB(Bitmap bmp){
         int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
         long N = bmp.getWidth()*bmp.getHeight();
         int[][] h = histogramRGB(bmp);
@@ -720,9 +760,11 @@ public class MainActivity extends AppCompatActivity {
             pixels[i] = (alpha << 24) | (red << 16) | (green << 8) | (int)newBlue;
 
         }
-        bmp.setPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
+        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
+        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
+        return result;
     }
-    private void equalizationRGB(Bitmap bmp){                                                       // function to equalize R, G and B at once
+    private Bitmap equalizationRGB(Bitmap bmp){                                                       // function to equalize R, G and B at once
         int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
         long N = bmp.getWidth()*bmp.getHeight();
         int[][] h = histogramRGB(bmp);
@@ -751,7 +793,9 @@ public class MainActivity extends AppCompatActivity {
             pixels[i] = (alpha << 24) | ((int)newRed << 16) | ((int)newGreen << 8) | (int)newBlue;
 
         }
-        bmp.setPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
+        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
+        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
+        return result;
     }
 
 
@@ -760,7 +804,7 @@ public class MainActivity extends AppCompatActivity {
     //------------------------------------------
 
 
-    private void equalizationH(Bitmap bmp){
+    private Bitmap equalizationH(Bitmap bmp){
         int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
         float[] hsv = new float[3];
         long N = bmp.getWidth()*bmp.getHeight();
@@ -782,10 +826,12 @@ public class MainActivity extends AppCompatActivity {
             pixels[i] = HSVtoRGB(hsv);
 
         }
-        bmp.setPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
+        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
+        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
+        return result;
     }
 
-    private void equalizationS(Bitmap bmp){
+    private Bitmap equalizationS(Bitmap bmp){
         int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
         float[] hsv = new float[3];
         long N = bmp.getWidth()*bmp.getHeight();
@@ -808,10 +854,12 @@ public class MainActivity extends AppCompatActivity {
             pixels[i] = HSVtoRGB(hsv);
 
         }
-        bmp.setPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
+        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
+        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
+        return result;
     }
 
-    private void equalizationV(Bitmap bmp){
+    private Bitmap equalizationV(Bitmap bmp){
         int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
         float[] hsv = new float[3];
         long N = bmp.getWidth()*bmp.getHeight();
@@ -834,10 +882,12 @@ public class MainActivity extends AppCompatActivity {
             pixels[i] = HSVtoRGB(hsv);
 
         }
-        bmp.setPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
+        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
+        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
+        return result;
     }
 
-    private void equalizationHSV(Bitmap bmp){                                                       // function to equalize H, S and V at once
+    private Bitmap equalizationHSV(Bitmap bmp){                                                       // function to equalize H, S and V at once
         int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
         float[] hsv = new float[3];
         long N = bmp.getWidth()*bmp.getHeight();
@@ -867,7 +917,9 @@ public class MainActivity extends AppCompatActivity {
             pixels[i] = HSVtoRGB(hsv);
 
         }
-        bmp.setPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
+        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
+        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
+        return result;
     }
 
 
@@ -940,7 +992,7 @@ public class MainActivity extends AppCompatActivity {
     int[] hLaplace4 ={0,1,0,1,-4,1,0,1,0};
     int[] hLaplace8 ={1,1,1,1,-8,1,1,1,1};
 
-    private void convolution(Bitmap bmp,int n,int filtre){
+    private Bitmap convolution(Bitmap bmp,int n,int filtre){
         int[] pixels = new int[bmp.getHeight() * bmp.getWidth()];
         int[] newPixels = new int[bmp.getHeight() * bmp.getWidth()];
         int N = (2*n+1)*(2*n+1);
@@ -987,12 +1039,13 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
-        bmp.setPixels(newPixels,0,bmp.getWidth(),0,0,bmp.getWidth(),bmp.getHeight());
-
+        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
+        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
+        return result;
     }
 
 
-    private void convDerivationHorizontal(Bitmap bmp,int filtre) {
+    private Bitmap convDerivationHorizontal(Bitmap bmp,int filtre) {
         int[] pixels = new int[bmp.getHeight() * bmp.getWidth()];
         int[] newPixels = new int[bmp.getHeight() * bmp.getWidth()];
         int taille = bmp.getWidth() * bmp.getHeight();
@@ -1026,11 +1079,13 @@ public class MainActivity extends AppCompatActivity {
 
 
         }
-        bmp.setPixels(newPixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
+        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
+        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
+        return result;
     }
 
 
-    private void convDerivationVertical(Bitmap bmp,int filtre){
+    private Bitmap convDerivationVertical(Bitmap bmp,int filtre){
         int[] pixels = new int[bmp.getHeight() * bmp.getWidth()];
         int[] newPixels = new int[bmp.getHeight() * bmp.getWidth()];
         int taille = bmp.getWidth()*bmp.getHeight();
@@ -1062,12 +1117,13 @@ public class MainActivity extends AppCompatActivity {
             newPixels[i] = (0xFF << 24) | (trueGray << 16) | (trueGray << 8) | trueGray;
 
         }
-        bmp.setPixels(newPixels,0,bmp.getWidth(),0,0,bmp.getWidth(),bmp.getHeight());
-
+        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
+        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
+        return result;
     }
 
 
-    private void contour(Bitmap bmp,int filtre){
+    private Bitmap contour(Bitmap bmp,int filtre){
         int[] pixels = new int[bmp.getHeight() * bmp.getWidth()];
         int[] newPixels = new int[bmp.getHeight() * bmp.getWidth()];
         int taille = bmp.getWidth()*bmp.getHeight();
@@ -1110,8 +1166,9 @@ public class MainActivity extends AppCompatActivity {
             newPixels[i] = (0xFF << 24) | (trueGray << 16) | (trueGray << 8) | trueGray;
 
         }
-        bmp.setPixels(newPixels,0,bmp.getWidth(),0,0,bmp.getWidth(),bmp.getHeight());
-
+        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
+        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
+        return result;
     }
 
     @Override
@@ -1124,38 +1181,38 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.gray:
-                toGrayFast(bitmap);
+                bitmap = toGrayFast(bitmap);
                 iv.setImageBitmap(bitmap);
                 return true;
             case R.id.colorize:
-                colorize(bitmap);
+                bitmap = colorize(bitmap);
                 iv.setImageBitmap(bitmap);
                 return true;
             case R.id.isolate:
-                isolateColor(bitmap);
+                bitmap = isolateColor(bitmap);
                 iv.setImageBitmap(bitmap);
                 return true;
             case R.id.contrast_augment:
-                contrastAugment(bitmap);
+                bitmap = contrastAugment(bitmap);
                 iv.setImageBitmap(bitmap);
                 return true;
             case R.id.contrast_decrease:
-                contrastDecrease(bitmap,20);
+                bitmap = contrastDecrease(bitmap,20);
                 iv.setImageBitmap(bitmap);
                 return true;
 
 //----------------------------------------------------------
 
             case R.id.contrast_R:
-                contrastAugmentR(bitmap);
+                bitmap = contrastAugmentR(bitmap);
                 iv.setImageBitmap(bitmap);
                 return true;
             case R.id.contrast_G:
-                contrastAugmentG(bitmap);
+                bitmap = contrastAugmentG(bitmap);
                 iv.setImageBitmap(bitmap);
                 return true;
             case R.id.contrast_B:
-                contrastAugmentB(bitmap);
+                bitmap = contrastAugmentB(bitmap);
                 iv.setImageBitmap(bitmap);
                 return true;
 
@@ -1163,35 +1220,35 @@ public class MainActivity extends AppCompatActivity {
 //----------------------------------------------------------
 
             case R.id.contrast_H:
-                contrastAugmentH(bitmap);
+                bitmap =contrastAugmentH(bitmap);
                 iv.setImageBitmap(bitmap);
                 return true;
             case R.id.contrast_S:
-                contrastAugmentS(bitmap);
+                bitmap = contrastAugmentS(bitmap);
                 iv.setImageBitmap(bitmap);
                 return true;
             case R.id.contrast_V:
-                contrastAugmentV(bitmap);
+                bitmap = contrastAugmentV(bitmap);
                 iv.setImageBitmap(bitmap);
                 return true;
 
 //----------------------------------------------------------
 
             case R.id.egalise:
-                equalizate(bitmap);
+                bitmap = equalizate(bitmap);
                 iv.setImageBitmap(bitmap);
                 return true;
 
             case R.id.egalise_R:
-                equalizationR(bitmap);
+                bitmap = equalizationR(bitmap);
                 iv.setImageBitmap(bitmap);
                 return true;
             case R.id.egalise_G:
-                equalizationG(bitmap);
+                bitmap = equalizationG(bitmap);
                 iv.setImageBitmap(bitmap);
                 return true;
             case R.id.egalise_B:
-                equalizationB(bitmap);
+                bitmap = equalizationB(bitmap);
                 iv.setImageBitmap(bitmap);
                 return true;
             case R.id.egalise_RGB:
@@ -1200,15 +1257,15 @@ public class MainActivity extends AppCompatActivity {
 //----------------------------------------------------------
 
             case R.id.egalise_H:
-                equalizationH(bitmap);
+                bitmap = equalizationH(bitmap);
                 iv.setImageBitmap(bitmap);
                 return true;
             case R.id.egalise_S:
-                equalizationS(bitmap);
+                bitmap = equalizationS(bitmap);
                 iv.setImageBitmap(bitmap);
                 return true;
             case R.id.egalise_V:
-                equalizationV(bitmap);
+                bitmap = equalizationV(bitmap);
                 iv.setImageBitmap(bitmap);
                 return true;
             case R.id.egalise_HSV:
@@ -1217,48 +1274,48 @@ public class MainActivity extends AppCompatActivity {
 //----------------------------------------------------------
 
             case R.id.moyenneur:
-                convolution(bitmap,5,0);
+                bitmap = convolution(bitmap,5,0);
                 iv.setImageBitmap(bitmap);
                 return true;
             case R.id.gauss5:
-                convolution(bitmap,2,1);
+                bitmap = convolution(bitmap,2,1);
                 iv.setImageBitmap(bitmap);
                 return true;
 
             case R.id.detectHoriP:
-                convDerivationHorizontal(bitmap,0);
+                bitmap = convDerivationHorizontal(bitmap,0);
                 iv.setImageBitmap(bitmap);
                 return true;
             case R.id.detectVertP:
-                convDerivationVertical(bitmap,0);
+                bitmap = convDerivationVertical(bitmap,0);
                 iv.setImageBitmap(bitmap);
                 return true;
 
             case R.id.detectHoriS:
-                convDerivationHorizontal(bitmap,1);
+                bitmap = convDerivationHorizontal(bitmap,1);
                 iv.setImageBitmap(bitmap);
                 return true;
             case R.id.detectVertS:
-                convDerivationVertical(bitmap,1);
+                bitmap = convDerivationVertical(bitmap,1);
                 iv.setImageBitmap(bitmap);
                 return true;
 
             case R.id.contourPrewitt:
-                contour(bitmap,0);
+                bitmap = contour(bitmap,0);
                 iv.setImageBitmap(bitmap);
                 return true;
 
             case R.id.contourSobel:
-                contour(bitmap,1);
+                bitmap = contour(bitmap,1);
                 iv.setImageBitmap(bitmap);
                 return true;
 
             case R.id.laplace4:
-                convolution(bitmap,1,2);
+                bitmap = convolution(bitmap,1,2);
                 iv.setImageBitmap(bitmap);
                 return true;
             case R.id.laplace8:
-                convolution(bitmap,1,3);
+                bitmap = convolution(bitmap,1,3);
                 iv.setImageBitmap(bitmap);
                 return true;
 
