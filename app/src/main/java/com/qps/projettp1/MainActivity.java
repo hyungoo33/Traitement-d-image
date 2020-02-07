@@ -1,11 +1,15 @@
 package com.qps.projettp1;
 
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,8 +24,10 @@ public class MainActivity extends AppCompatActivity {
 
     Bitmap bitmap;
     ImageView iv;
-    int idImage = R.drawable.isolate;                                                           //set the image you want to use
+    int idImage = R.drawable.convolution;                                                           //set the image you want to use
     BitmapFactory.Options options = new BitmapFactory.Options();
+    Button cameraButton;
+    Button galleryButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,11 +35,32 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         iv = findViewById(R.id.image);
         Button buttonReset = findViewById(R.id.reset_btn);
+        cameraButton = findViewById(R.id.camera_btn);
+        galleryButton = findViewById(R.id.load_btn);
         options.inSampleSize = 1;
         options.inMutable = true;
         bitmap = BitmapFactory.decodeResource(getResources(),idImage,options);
 
         buttonReset.setOnClickListener(clickListenerReset);
+        cameraButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+                startActivityForResult(intent, 0);
+            }
+
+        });
+        galleryButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                startActivityForResult(intent,1000);
+            }
+
+        });
+
 
 
         iv.setImageBitmap(bitmap);
@@ -41,6 +68,18 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+     @Override
+     protected void onActivityResult(int requestCode, int resultCode,@Nullable Intent data){
+        super.onActivityResult(requestCode,resultCode,data);
+        if(resultCode == RESULT_OK && requestCode == 1000){
+            iv.setImageURI(data.getData());
+        }
+        if(requestCode == 0){
+            bitmap = (Bitmap ) data.getExtras().get("data");
+            iv.setImageBitmap(bitmap);
+        }
+     }
 
 
     private float mod(float x, float y)                                                             //two mod methods for the math needed
@@ -978,8 +1017,11 @@ public class MainActivity extends AppCompatActivity {
                 }
 
             }
-            if(filtre == 0)trueGray =((int)newGray + 3*255)/6;
-            if (filtre == 1) trueGray = ((int) newGray + 4 * 255) / 8;
+            if(filtre == 0)trueGray =((int)newGray + 255/2);
+            if(filtre == 1)trueGray =((int) newGray + 255/2);
+
+            if(trueGray < 0 )trueGray = 0;
+            if(trueGray > 255) trueGray = 255;
             newPixels[i] = (0xFF << 24) | (trueGray << 16) | (trueGray << 8) | trueGray;
 
 
@@ -1012,8 +1054,11 @@ public class MainActivity extends AppCompatActivity {
                     compteur++;
                 }
             }
-            if(filtre == 0)trueGray =((int)newGray + 3*255)/6;
-            if(filtre == 1)trueGray =((int) newGray + 4 * 255) / 8;
+            if(filtre == 0)trueGray =((int)newGray + 255/2);
+            if(filtre == 1)trueGray =((int) newGray + 255/2);
+
+            if(trueGray < 0 )trueGray = 0;
+            if(trueGray > 255) trueGray = 255;
             newPixels[i] = (0xFF << 24) | (trueGray << 16) | (trueGray << 8) | trueGray;
 
         }
