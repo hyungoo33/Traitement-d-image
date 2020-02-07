@@ -13,10 +13,7 @@
     <bookmark url="file://$PROJECT_DIR$/app/src/main/java/com/qps/projettp1/MainActivity.java" line="36" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a29e0453-1789-4469-9571-52d473370006" name="Default Changelist" comment="Factorisation formule RGB to Gray">
-      <change beforePath="/autofs/unitytravail/travail/mpin003/L3/Android/Traitement-d-image/.idea/workspace.xml" beforeDir="false" afterPath="/autofs/unitytravail/travail/mpin003/L3/Android/Traitement-d-image/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="/autofs/unitytravail/travail/mpin003/L3/Android/Traitement-d-image/app/src/main/java/com/qps/projettp1/MainActivity.java" beforeDir="false" afterPath="/autofs/unitytravail/travail/mpin003/L3/Android/Traitement-d-image/app/src/main/java/com/qps/projettp1/MainActivity.java" afterDir="false" />
-    </list>
+    <list default="true" id="a29e0453-1789-4469-9571-52d473370006" name="Default Changelist" comment="Factorisation des listes de if() en switch/case" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,10 +36,9 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/qps/projettp1/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="471">
-              <caret line="570" column="48" lean-forward="true" selection-start-line="570" selection-start-column="48" selection-end-line="570" selection-end-column="48" />
+            <state relative-caret-position="165">
+              <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="e#9943#9944#0" expanded="true" />
                 <element signature="e#9993#9994#0" expanded="true" />
                 <element signature="e#10054#10055#0" expanded="true" />
@@ -238,6 +234,14 @@
       <option name="presentableId" value="Default" />
       <updated>1570105655142</updated>
     </task>
+    <task id="LOCAL-00001" summary="Factorisation formule LUT">
+      <created>1581089670473</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1581089670473</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TodoView">
@@ -282,7 +286,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Factorisation formule RGB to Gray" />
-    <option name="LAST_COMMIT_MESSAGE" value="Factorisation formule RGB to Gray" />
+    <MESSAGE value="Factorisation formule LUT" />
+    <option name="LAST_COMMIT_MESSAGE" value="Factorisation formule LUT" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file:///autofs/unitytravail/travail/hwalle/ProjetTP1/app/src/main/res/layout/activity_main.xml" />
@@ -296,10 +301,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/qps/projettp1/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="570" column="48" lean-forward="true" selection-start-line="570" selection-start-column="48" selection-end-line="570" selection-end-column="48" />
+        <state relative-caret-position="165">
+          <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="e#9943#9944#0" expanded="true" />
             <element signature="e#9993#9994#0" expanded="true" />
             <element signature="e#10054#10055#0" expanded="true" />
