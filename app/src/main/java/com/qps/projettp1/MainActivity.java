@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     Button cameraButton;
     Button galleryButton;
     Button saveButton;
+    Tools tools = new Tools();
 
 
 
@@ -110,19 +111,11 @@ public class MainActivity extends AppCompatActivity {
         }
      }
 
+    //----------------------------------------------------------
 
-    private float mod(float x, float y)                                                             //two mod methods for the math needed
-    {
-        float result = x % y;
-        return result < 0? result + y : result;
-    }
-    int mod ( int x , int y )
-    {
-        return x >= 0 ? x % y : y - 1 - ((-x-1) % y) ;
-    }
+    //------------------ Basic modifications -------------------
 
-
-
+    //----------------------------------------------------------
 
     private Bitmap toGrayFast(Bitmap bp){
 
@@ -152,9 +145,9 @@ public class MainActivity extends AppCompatActivity {
             int red = Color.red(pixels[i]);
             int green = Color.green(pixels[i]);
             int blue = Color.blue(pixels[i]);
-            RGBtoHSV(red,green,blue,hsv);
+            tools.RGBtoHSV(red,green,blue,hsv);
             hsv[0]= hue;
-            pixels[i]=HSVtoRGB(hsv);
+            pixels[i]=tools.HSVtoRGB(hsv);
 
         }
         Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
@@ -176,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
             int red = Color.red(pixels[i]);
             int green = Color.green(pixels[i]);
             int blue = Color.blue(pixels[i]);
-            RGBtoHSV(red,green,blue,hsv);
+            tools.RGBtoHSV(red,green,blue,hsv);
             int gray = (int)(0.3*red + 0.59*green + 0.11*blue);
             float H = hsv[0];
             if(hue>=range && hue<360-range) {
@@ -196,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
 
     //----------------------------------------------------------
 
-    //--------------------------HISTOGRAM-----------------------
+    //----------------------- Histogram ------------------------
 
     //----------------------------------------------------------
 
@@ -254,7 +247,7 @@ public class MainActivity extends AppCompatActivity {
             int red = Color.red(pixels[i]);
             int green = Color.green(pixels[i]);
             int blue = Color.blue(pixels[i]);
-            RGBtoHSV(red,green,blue,hsv);
+            tools.RGBtoHSV(red,green,blue,hsv);
             histH[(int)hsv[0]]++;
             histS[(int)(hsv[1]*359.0f)]++;
             histV[(int)(hsv[2]*359.0f)]++;
@@ -269,7 +262,7 @@ public class MainActivity extends AppCompatActivity {
 
     //----------------------------------------------------------
 
-    //--------------------------DYNAMIQUE-----------------------
+    //------------------------ Dynamic -------------------------
 
     //----------------------------------------------------------
 
@@ -346,7 +339,7 @@ public class MainActivity extends AppCompatActivity {
             int red = Color.red(pixels[i]);
             int green = Color.green(pixels[i]);
             int blue = Color.blue(pixels[i]);
-            RGBtoHSV(red,green,blue,hsv);
+            tools.RGBtoHSV(red,green,blue,hsv);
             if(hsv[0] < minH) minH = hsv[0];
             if(hsv[0] > maxH) maxH = hsv[0];
             if(hsv[1] < minS) minS = hsv[1];
@@ -368,7 +361,7 @@ public class MainActivity extends AppCompatActivity {
 
     //--------------------------------------------------------------
 
-    //-------------------------- CONTRAST --------------------------
+    //-------------------------- Contrast --------------------------
 
     //--------------------------------------------------------------
 
@@ -424,9 +417,11 @@ public class MainActivity extends AppCompatActivity {
         return result;
     }
 
-    //----------------------------------------
-    //-----------contrastAugment : RGB--------
-    //----------------------------------------
+    //----------------------------------------------------------
+
+    //---------------- Contrast augment : RGB ------------------
+
+    //----------------------------------------------------------
 
     // The RGB parameter is used to select the component to modify :
     // 0 = R ; 1 = G ; 2 = B
@@ -467,79 +462,6 @@ public class MainActivity extends AppCompatActivity {
         return result;
     }
 
-    // The methods below are now replaced by the single method above.
-    /*
-    private Bitmap contrastAugmentR(Bitmap bmp){
-        int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
-        int[] dynamique = dynamiqueRGB(bmp);
-        int minR = dynamique[0];
-        int maxR = dynamique[1];
-        int[] LUTR = new int[256];
-        for(int ng = 0; ng < 256; ng++){
-            LUTR[ng] = (255*(ng - minR))/(maxR - minR);
-        }
-
-        bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
-        for(int i = 0; i < bmp.getWidth()*bmp.getHeight(); i++){
-            int alpha = Color.alpha(pixels[i]);
-            int red = Color.red(pixels[i]);
-            int green = Color.green(pixels[i]);
-            int blue = Color.blue(pixels[i]);
-            int newRed = LUTR[red];
-            pixels[i] = (alpha << 24) | (newRed << 16) | (green << 8) | blue;
-        }
-        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
-        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
-        return result;
-    }
-    private Bitmap contrastAugmentG(Bitmap bmp){
-        int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
-        int[] dynamique = dynamiqueRGB(bmp);
-        int minG = dynamique[2];
-        int maxG = dynamique[3];
-
-        int[] LUTG = new int[256];
-        for(int ng = 0; ng < 256; ng++){
-            LUTG[ng] = (255*(ng - minG))/(maxG - minG);
-        }
-        bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
-        for(int i = 0; i < bmp.getWidth()*bmp.getHeight(); i++){
-            int alpha = Color.alpha(pixels[i]);
-            int red = Color.red(pixels[i]);
-            int green = Color.green(pixels[i]);
-            int blue = Color.blue(pixels[i]);
-            int newGreen = LUTG[green];
-            pixels[i] = (alpha << 24) | (red << 16) | (newGreen << 8) | blue;
-        }
-        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
-        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
-        return result;
-    }
-
-    private Bitmap contrastAugmentB(Bitmap bmp){
-        int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
-        int[] dynamique = dynamiqueRGB(bmp);
-        int minB = dynamique[4];
-        int maxB = dynamique[5];
-
-        int[] LUTB = new int[256];
-        for(int ng = 0; ng < 256; ng++){
-            LUTB[ng] = (255*(ng - minB))/(maxB - minB);
-        }
-        bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
-        for(int i = 0; i < bmp.getWidth()*bmp.getHeight(); i++){
-            int alpha = Color.alpha(pixels[i]);
-            int red = Color.red(pixels[i]);
-            int green = Color.green(pixels[i]);
-            int blue = Color.blue(pixels[i]);
-            int newBlue = LUTB[blue];
-            pixels[i] = (alpha << 24) | (red << 16) | (green << 8) | newBlue;
-        }
-        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
-        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
-        return result;
-    }
-    */
 
     private Bitmap contrastAugmentRGB(Bitmap bmp){                                                    //function to augment the contrast of R,G, and B at once
         int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
@@ -580,11 +502,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    //----------------------------------------------------------
 
+    //---------------- Contrast augment : HSV ------------------
 
-    //----------------------------------------
-    //-----------contrastAugment : HSV--------
-    //----------------------------------------
+    //----------------------------------------------------------
 
     // The HSV parameter is used to select the component to modify :
     // 0 = H ; 1 = S ; 2 = V
@@ -604,7 +526,7 @@ public class MainActivity extends AppCompatActivity {
             int red = Color.red(pixels[i]);
             int green = Color.green(pixels[i]);
             int blue = Color.blue(pixels[i]);
-            RGBtoHSV(red,green,blue,hsv);
+            tools.RGBtoHSV(red,green,blue,hsv);
             switch (HSV) {
                 case 0:
                     hsv[0] = (LUT[(int)(hsv[0])]);
@@ -616,7 +538,7 @@ public class MainActivity extends AppCompatActivity {
                     hsv[2] = (LUT[(int)(hsv[2]*359.0f)]/359.0f);
                     break;
             }
-            pixels[i] = HSVtoRGB(hsv);
+            pixels[i] = tools.HSVtoRGB(hsv);
         }
 
         Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
@@ -624,87 +546,6 @@ public class MainActivity extends AppCompatActivity {
         return result;
     }
 
-    // The methods below are now replaced by the single method above.
-    /*
-    private Bitmap contrastAugmentH(Bitmap bmp){
-
-        float[] hsv = new float[3];
-        int[] dyn = dynamiqueHSV(bmp);
-        int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
-        int minH = dyn[0];
-        int maxH = dyn[1];
-
-        int[] LUTH = new int[360];
-
-        for(int ng = 0; ng < 360; ng++){
-            LUTH[ng] = (359*(ng - minH))/(maxH - minH);
-        }
-        bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
-        for(int i = 0; i < bmp.getWidth()*bmp.getHeight(); i++){
-            int red = Color.red(pixels[i]);
-            int green = Color.green(pixels[i]);
-            int blue = Color.blue(pixels[i]);
-            RGBtoHSV(red,green,blue,hsv);
-            hsv[0] = (LUTH[(int)(hsv[0])]);
-            pixels[i] = HSVtoRGB(hsv);
-        }
-        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
-        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
-        return result;
-    }
-    private Bitmap contrastAugmentS(Bitmap bmp){
-
-        float[] hsv = new float[3];
-        int[] dyn = dynamiqueHSV(bmp);
-        int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
-        int minS = dyn[2];
-        int maxS = dyn[3];
-
-        int[] LUTS = new int[360];
-
-        for(int ng = 0; ng < 360; ng++){
-            LUTS[ng] = (359*(ng - minS))/(maxS - minS);
-        }
-        bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
-        for(int i = 0; i < bmp.getWidth()*bmp.getHeight(); i++){
-            int red = Color.red(pixels[i]);
-            int green = Color.green(pixels[i]);
-            int blue = Color.blue(pixels[i]);
-            RGBtoHSV(red,green,blue,hsv);
-            hsv[1] = (LUTS[(int)(hsv[1]*359.0f)]/359.0f);
-            pixels[i] = HSVtoRGB(hsv);
-        }
-        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
-        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
-        return result;
-    }
-    private Bitmap contrastAugmentV(Bitmap bmp){
-
-        float[] hsv = new float[3];
-        int[] dyn = dynamiqueHSV(bmp);
-        int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
-        int minV = dyn[4];
-        int maxV = dyn[5];
-
-        int[] LUTV = new int[360];
-
-        for(int ng = 0; ng < 360; ng++){
-            LUTV[ng] = (359*(ng - minV))/(maxV - minV);
-        }
-        bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
-        for(int i = 0; i < bmp.getWidth()*bmp.getHeight(); i++){
-            int red = Color.red(pixels[i]);
-            int green = Color.green(pixels[i]);
-            int blue = Color.blue(pixels[i]);
-            RGBtoHSV(red,green,blue,hsv);
-            hsv[2] = (LUTV[(int)(hsv[2]*359.0f)]/359.0f);
-            pixels[i] = HSVtoRGB(hsv);
-        }
-        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
-        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
-        return result;
-    }
-    */
 
     private Bitmap contrastAugmentHSV(Bitmap bmp){                                                    //function to augment the contrast of H,S and V at once
 
@@ -736,11 +577,11 @@ public class MainActivity extends AppCompatActivity {
             int red = Color.red(pixels[i]);
             int green = Color.green(pixels[i]);
             int blue = Color.blue(pixels[i]);
-            RGBtoHSV(red,green,blue,hsv);
+            tools.RGBtoHSV(red,green,blue,hsv);
             hsv[0] = LUTH[(int)(hsv[0])];
             hsv[1] = (LUTS[(int)(hsv[1]*359.0f)]/359.0f);
             hsv[2] = (LUTV[(int)(hsv[2]*359.0f)]/359.0f);
-            pixels[i] = HSVtoRGB(hsv);
+            pixels[i] = tools.HSVtoRGB(hsv);
         }
         Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
         result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
@@ -751,7 +592,7 @@ public class MainActivity extends AppCompatActivity {
 
     //--------------------------------------------------------------
 
-    //----------------------- EQUALIZATION --------------------------
+    //----------------------- Equalization -------------------------
 
     //--------------------------------------------------------------
 
@@ -784,9 +625,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    //----------------------------------------
-    //------------equalization : RGB-----------
-    //----------------------------------------
+    //----------------------------------------------------------
+
+    //------------------ Equalization : RGB --------------------
+
+    //----------------------------------------------------------
 
     // The RGB parameter is used to select the component to modify :
     // 0 = R ; 1 = G ; 2 = B
@@ -830,84 +673,6 @@ public class MainActivity extends AppCompatActivity {
         return result;
     }
 
-    // The methods below are now replaced by the single method above.
-    /*
-    private Bitmap equalizationR(Bitmap bmp){
-        int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
-        long N = bmp.getWidth()*bmp.getHeight();
-        int[][] h = histogramRGB(bmp);
-        int[] hR = h[0];
-        long[] C = new long[256];
-        for(int k = 0; k < 255; k++){
-            for(int i = 0;i <= k; i++){
-                C[k] += hR[i];
-            }
-        }
-        bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
-        for(int i = 0; i < bmp.getWidth()*bmp.getHeight(); i++){
-            int alpha = Color.alpha(pixels[i]);
-            int red = Color.red(pixels[i]);
-            int green = Color.green(pixels[i]);
-            int blue = Color.blue(pixels[i]);
-            long newRed = (C[red]*255)/N;
-            pixels[i] = (alpha << 24) | ((int)newRed << 16) | (green << 8) | blue;
-
-        }
-        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
-        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
-        return result;
-    }
-    private Bitmap equalizationG(Bitmap bmp){
-        int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
-        long N = bmp.getWidth()*bmp.getHeight();
-        int[][] h = histogramRGB(bmp);
-        int[] hG = h[1];
-        long[] C = new long[256];
-        for(int k = 0; k < 255; k++){
-            for(int i = 0;i <= k; i++){
-                C[k] += hG[i];
-            }
-        }
-        bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
-        for(int i = 0; i < bmp.getWidth()*bmp.getHeight(); i++){
-            int alpha = Color.alpha(pixels[i]);
-            int red = Color.red(pixels[i]);
-            int green = Color.green(pixels[i]);
-            int blue = Color.blue(pixels[i]);
-            long newGreen = (C[green]*255)/N;
-            pixels[i] = (alpha << 24) | (red << 16) | ((int)newGreen << 8) | blue;
-
-        }
-        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
-        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
-        return result;
-    }
-    private Bitmap equalizationB(Bitmap bmp){
-        int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
-        long N = bmp.getWidth()*bmp.getHeight();
-        int[][] h = histogramRGB(bmp);
-        int[] hB = h[2];
-        long[] C = new long[256];
-        for(int k = 0; k < 255; k++){
-            for(int i = 0;i <= k; i++){
-                C[k] += hB[i];
-            }
-        }
-        bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
-        for(int i = 0; i < bmp.getWidth()*bmp.getHeight(); i++){
-            int alpha = Color.alpha(pixels[i]);
-            int red = Color.red(pixels[i]);
-            int green = Color.green(pixels[i]);
-            int blue = Color.blue(pixels[i]);
-            long newBlue = (C[blue]*255)/N;
-            pixels[i] = (alpha << 24) | (red << 16) | (green << 8) | (int)newBlue;
-
-        }
-        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
-        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
-        return result;
-    }
-    */
 
     private Bitmap equalizationRGB(Bitmap bmp){                                                       // function to equalize R, G and B at once
         int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
@@ -944,9 +709,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    //------------------------------------------
-    //------------equalization : HSV-------------
-    //------------------------------------------
+    //----------------------------------------------------------
+
+    //------------------ Equalization : HSV --------------------
+
+    //----------------------------------------------------------
 
     // The HSV parameter is used to select the component to modify :
     // 0 = H ; 1 = S ; 2 = V
@@ -968,7 +735,7 @@ public class MainActivity extends AppCompatActivity {
             int red = Color.red(pixels[i]);
             int green = Color.green(pixels[i]);
             int blue = Color.blue(pixels[i]);
-            RGBtoHSV(red,green,blue,hsv);
+            tools.RGBtoHSV(red,green,blue,hsv);
 
             switch (HSV) {
                 case 0:
@@ -981,7 +748,7 @@ public class MainActivity extends AppCompatActivity {
                     hsv[2] = C[(int)(hsv[2]*359)]*1.0f/N;
                     break;
             }
-            pixels[i] = HSVtoRGB(hsv);
+            pixels[i] = tools.HSVtoRGB(hsv);
         }
 
         Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
@@ -989,89 +756,6 @@ public class MainActivity extends AppCompatActivity {
         return result;
     }
 
-    // The methods below are now replaced by the single method above.
-    /*
-    private Bitmap equalizationH(Bitmap bmp){
-        int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
-        float[] hsv = new float[3];
-        long N = bmp.getWidth()*bmp.getHeight();
-        int[][] h = histogramHSV(bmp);
-        int[] hH = h[0];
-        long[] CH = new long[360];
-        for(int k = 0; k < 360; k++){
-            for(int i = 0;i <= k; i++){
-                CH[k] += hH[i];
-            }
-        }
-        bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
-        for(int i = 0; i < bmp.getWidth()*bmp.getHeight(); i++){
-            int red = Color.red(pixels[i]);
-            int green = Color.green(pixels[i]);
-            int blue = Color.blue(pixels[i]);
-            RGBtoHSV(red,green,blue,hsv);
-            hsv[0] = CH[(int)hsv[0]]*359.0f/N;
-            pixels[i] = HSVtoRGB(hsv);
-
-        }
-        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
-        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
-        return result;
-    }
-
-    private Bitmap equalizationS(Bitmap bmp){
-        int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
-        float[] hsv = new float[3];
-        long N = bmp.getWidth()*bmp.getHeight();
-        int[][] h = histogramHSV(bmp);
-        int[] hS = h[1];
-        long[] CS = new long[360];
-        for(int k = 0; k < 360; k++){
-            for(int i = 0;i <= k; i++){
-                CS[k] += hS[i];
-            }
-        }
-        bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
-        for(int i = 0; i < bmp.getWidth()*bmp.getHeight(); i++){
-            int red = Color.red(pixels[i]);
-            int green = Color.green(pixels[i]);
-            int blue = Color.blue(pixels[i]);
-            RGBtoHSV(red,green,blue,hsv);
-            hsv[1] = CS[(int)(hsv[1]*359)]*1.0f/N;
-            pixels[i] = HSVtoRGB(hsv);
-
-        }
-        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
-        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
-        return result;
-    }
-
-    private Bitmap equalizationV(Bitmap bmp){
-        int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
-        float[] hsv = new float[3];
-        long N = bmp.getWidth()*bmp.getHeight();
-        int[][] h = histogramHSV(bmp);
-        int[] hV = h[2];
-        long[] CV = new long[360];
-        for(int k = 0; k < 360; k++){
-            for(int i = 0;i <= k; i++){
-                CV[k] += hV[i];
-            }
-        }
-        bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
-        for(int i = 0; i < bmp.getWidth()*bmp.getHeight(); i++){
-            int red = Color.red(pixels[i]);
-            int green = Color.green(pixels[i]);
-            int blue = Color.blue(pixels[i]);
-            RGBtoHSV(red,green,blue,hsv);
-            hsv[2] = CV[(int)(hsv[2]*359)]*1.0f/N;
-            pixels[i] = HSVtoRGB(hsv);
-
-        }
-        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
-        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
-        return result;
-    }
-    */
 
     private Bitmap equalizationHSV(Bitmap bmp){                                                       // function to equalize H, S and V at once
         int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
@@ -1096,11 +780,11 @@ public class MainActivity extends AppCompatActivity {
             int red = Color.red(pixels[i]);
             int green = Color.green(pixels[i]);
             int blue = Color.blue(pixels[i]);
-            RGBtoHSV(red,green,blue,hsv);
+            tools.RGBtoHSV(red,green,blue,hsv);
             hsv[0] = CH[(int)hsv[0]]*360.0f/N;
             hsv[1] = CS[(int)(hsv[1]*359)]*1.0f/N;
             hsv[2] = CV[(int)(hsv[2]*359)]*1.0f/N;
-            pixels[i] = HSVtoRGB(hsv);
+            pixels[i] = tools.HSVtoRGB(hsv);
 
         }
         Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
@@ -1110,59 +794,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    //--------------------------------------------------------------
-
-    //----------------------- RGB/HSV HSV/RGB--------------------------
-
-    //--------------------------------------------------------------
-
-
-
-
-    private void RGBtoHSV(int red,int green, int blue, float[] hsv){
-        float r = red/255.0f;
-        float g = green/255.0f;
-        float b = blue/255.0f;
-        float Cmax = Math.max(Math.max(r,g),b);
-        float Cmin = Math.min(Math.min(r,g),b);
-        float delta = Cmax-Cmin;
-
-        if(delta == 0)hsv[0]=0;
-        else if(Cmax == r) hsv[0] = 60*(mod((g-b)/delta,6));
-        else if(Cmax == g) hsv[0] = 60*((b-r)/delta + 2);
-        else if(Cmax == b) hsv[0] = 60*((r-g)/delta + 4);
-
-        if(Cmax == 0) hsv[1] = 0;
-        else if (Cmax != 0) hsv[1]= delta/Cmax;
-
-        hsv[2] = Cmax;
-    }
-    private int HSVtoRGB(float[] hsv){
-        float H = hsv[0], S = hsv[1], V = hsv[2];
-        float C = V*S;
-        float X = C * (1 - Math.abs((H/60)%2 -1));
-        float m = V - C;
-        float r=0,g=0,b=0;
-
-
-        if(H < 60){ r = C; g = X;}
-        else if(H >= 60&& H < 120) {r = X; g = C;}
-        else if(H >= 120 && H < 180){ b = X; g = C;}
-        else if(H >= 180 && H < 240){ b = C; g = X;}
-        else if(H >= 240 && H < 300){ r = X; b = C;}
-        else if(H >= 300 ){ r = C; b = X;}
-        float R =(r+m)*255 ,G = (g+m)*255 ,B=(b+m)*255;
-        int RGB =(0xFF << 24)|(Math.round(R) << 16)|(Math.round(G) << 8)|Math.round(B);
-        return (RGB);
-
-
-    }
-
-
 
     //------------------------------------------------------------
     //------------------------------------------------------------
-    //-------------------------CONVOLUTION------------------------
+    //------------------------ Convolution -----------------------
     //------------------------------------------------------------
     //------------------------------------------------------------
 
@@ -1192,9 +827,9 @@ public class MainActivity extends AppCompatActivity {
             for(int x = -n;x < n + 1; x++){
                 for(int y = -n;y < n + 1; y++){
 
-                    int red = Color.red(pixels[mod((i+x*bmp.getWidth()+y),taille)]);
-                    int green = Color.green(pixels[mod((i+x*bmp.getWidth()+y),taille)]);
-                    int blue = Color.blue(pixels[mod((i+x*bmp.getWidth()+y),taille)]);
+                    int red = Color.red(pixels[tools.mod((i+x*bmp.getWidth()+y),taille)]);
+                    int green = Color.green(pixels[tools.mod((i+x*bmp.getWidth()+y),taille)]);
+                    int blue = Color.blue(pixels[tools.mod((i+x*bmp.getWidth()+y),taille)]);
                     double gray =(0.3*red + 0.59*green + 0.11*blue);
                     if(filtre == 0)newGray += gray/N;
                     if(filtre == 1){
@@ -1243,9 +878,9 @@ public class MainActivity extends AppCompatActivity {
             for (int x = -1; x < 2; x++) {
                 for (int y = -1; y < 2; y++) {
 
-                    int red = Color.red(pixels[mod((i + x * bmp.getWidth() + y), taille)]);
-                    int green = Color.green(pixels[mod((i + x * bmp.getWidth() + y), taille)]);
-                    int blue = Color.blue(pixels[mod((i + x * bmp.getWidth() + y), taille)]);
+                    int red = Color.red(pixels[tools.mod((i + x * bmp.getWidth() + y), taille)]);
+                    int green = Color.green(pixels[tools.mod((i + x * bmp.getWidth() + y), taille)]);
+                    int blue = Color.blue(pixels[tools.mod((i + x * bmp.getWidth() + y), taille)]);
                     double gray = (0.3 * red + 0.59 * green + 0.11 * blue);
 
                     if (filtre == 0) newGray += gray * h1Prewitt[compteur];
@@ -1283,9 +918,9 @@ public class MainActivity extends AppCompatActivity {
             for(int x = -1;x < 2; x++){
                 for(int y = -1;y < 2; y++){
 
-                    int red = Color.red(pixels[mod((i+x*bmp.getWidth()+y),taille)]);
-                    int green = Color.green(pixels[mod((i+x*bmp.getWidth()+y),taille)]);
-                    int blue = Color.blue(pixels[mod((i+x*bmp.getWidth()+y),taille)]);
+                    int red = Color.red(pixels[tools.mod((i+x*bmp.getWidth()+y),taille)]);
+                    int green = Color.green(pixels[tools.mod((i+x*bmp.getWidth()+y),taille)]);
+                    int blue = Color.blue(pixels[tools.mod((i+x*bmp.getWidth()+y),taille)]);
                     double gray =(0.3*red + 0.59*green + 0.11*blue);
 
                     if(filtre == 0)newGray += gray*h2Prewitt[compteur];
@@ -1322,9 +957,9 @@ public class MainActivity extends AppCompatActivity {
             for(int x = -1;x < 2; x++){
                 for(int y = -1;y < 2; y++){
 
-                    int red = Color.red(pixels[mod((i+x*bmp.getWidth()+y),taille)]);
-                    int green = Color.green(pixels[mod((i+x*bmp.getWidth()+y),taille)]);
-                    int blue = Color.blue(pixels[mod((i+x*bmp.getWidth()+y),taille)]);
+                    int red = Color.red(pixels[tools.mod((i+x*bmp.getWidth()+y),taille)]);
+                    int green = Color.green(pixels[tools.mod((i+x*bmp.getWidth()+y),taille)]);
+                    int blue = Color.blue(pixels[tools.mod((i+x*bmp.getWidth()+y),taille)]);
                     double gray =(0.3*red + 0.59*green + 0.11*blue);
 
                     if(filtre == 0){
