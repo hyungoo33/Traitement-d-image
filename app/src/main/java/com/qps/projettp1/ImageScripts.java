@@ -3,9 +3,6 @@ package com.qps.projettp1;
 import android.graphics.Bitmap;
 import android.renderscript.Allocation;
 
-import com.qps.renderscript.ScriptC_colorise;
-import com.qps.renderscript.ScriptC_gray;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Random;
