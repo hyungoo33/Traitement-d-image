@@ -1045,7 +1045,6 @@ public class MainActivity extends AppCompatActivity {
         return result;
     }
 
-
     private Bitmap convDerivationHorizontal(Bitmap bmp,int filtre) {
         int[] pixels = new int[bmp.getHeight() * bmp.getWidth()];
         int[] newPixels = new int[bmp.getHeight() * bmp.getWidth()];
