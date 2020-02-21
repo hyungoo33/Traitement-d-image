@@ -428,9 +428,47 @@ public class MainActivity extends AppCompatActivity {
     //-----------contrastAugment : RGB--------
     //----------------------------------------
 
+    // The RGB parameter is used to select the component to modify :
+    // 0 = R ; 1 = G ; 2 = B
+    private Bitmap contrastAugmentSelectRGB(Bitmap bmp, int RGB) {
+        int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
+        int[] dynamique = dynamiqueRGB(bmp);
+        int minVal = dynamique[2*RGB];
+        int maxVal = dynamique[2*RGB + 1];
+        int[] LUT = new int[256];
+        for(int ng = 0; ng < 256; ng++){
+            LUT[ng] = (255*(ng - minVal))/(maxVal - minVal);
+        }
+        bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
 
+        for(int i = 0; i < bmp.getWidth()*bmp.getHeight(); i++){
+            int alpha = Color.alpha(pixels[i]);
+            int red = Color.red(pixels[i]);
+            int green = Color.green(pixels[i]);
+            int blue = Color.blue(pixels[i]);
+            switch (RGB) {
+                case 0:
+                    int newRed = LUT[red];
+                    pixels[i] = (alpha << 24) | (newRed << 16) | (green << 8) | blue;
+                    break;
+                case 1:
+                    int newGreen = LUT[green];
+                    pixels[i] = (alpha << 24) | (red << 16) | (newGreen << 8) | blue;
+                    break;
+                case 2:
+                    int newBlue = LUT[blue];
+                    pixels[i] = (alpha << 24) | (red << 16) | (green << 8) | newBlue;
+                    break;
+            }
+        }
 
+        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
+        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
+        return result;
+    }
 
+    // The methods below are now replaced by the single method above.
+    /*
     private Bitmap contrastAugmentR(Bitmap bmp){
         int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
         int[] dynamique = dynamiqueRGB(bmp);
@@ -501,6 +539,7 @@ public class MainActivity extends AppCompatActivity {
         result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
         return result;
     }
+    */
 
     private Bitmap contrastAugmentRGB(Bitmap bmp){                                                    //function to augment the contrast of R,G, and B at once
         int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
@@ -547,8 +586,46 @@ public class MainActivity extends AppCompatActivity {
     //-----------contrastAugment : HSV--------
     //----------------------------------------
 
+    // The HSV parameter is used to select the component to modify :
+    // 0 = H ; 1 = S ; 2 = V
+    private Bitmap contrastAugmentSelectHSV(Bitmap bmp, int HSV) {
+        float[] hsv = new float[3];
+        int[] dyn = dynamiqueHSV(bmp);
+        int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
+        int minVal = dyn[2*HSV];
+        int maxVal = dyn[2*HSV + 1];
+        int[] LUT = new int[360];
+        for(int ng = 0; ng < 360; ng++){
+            LUT[ng] = (359*(ng - minVal))/(maxVal - minVal);
+        }
+        bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
 
+        for(int i = 0; i < bmp.getWidth()*bmp.getHeight(); i++){
+            int red = Color.red(pixels[i]);
+            int green = Color.green(pixels[i]);
+            int blue = Color.blue(pixels[i]);
+            RGBtoHSV(red,green,blue,hsv);
+            switch (HSV) {
+                case 0:
+                    hsv[0] = (LUT[(int)(hsv[0])]);
+                    break;
+                case 1:
+                    hsv[1] = (LUT[(int)(hsv[1]*359.0f)]/359.0f);
+                    break;
+                case 2:
+                    hsv[2] = (LUT[(int)(hsv[2]*359.0f)]/359.0f);
+                    break;
+            }
+            pixels[i] = HSVtoRGB(hsv);
+        }
 
+        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
+        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
+        return result;
+    }
+
+    // The methods below are now replaced by the single method above.
+    /*
     private Bitmap contrastAugmentH(Bitmap bmp){
 
         float[] hsv = new float[3];
@@ -627,6 +704,7 @@ public class MainActivity extends AppCompatActivity {
         result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
         return result;
     }
+    */
 
     private Bitmap contrastAugmentHSV(Bitmap bmp){                                                    //function to augment the contrast of H,S and V at once
 
@@ -1311,15 +1389,15 @@ public class MainActivity extends AppCompatActivity {
 //----------------------------------------------------------
 
             case R.id.contrast_R:
-                bitmap = contrastAugmentR(bitmap);
+                bitmap = contrastAugmentSelectRGB(bitmap, 0);
                 iv.setImageBitmap(bitmap);
                 return true;
             case R.id.contrast_G:
-                bitmap = contrastAugmentG(bitmap);
+                bitmap = contrastAugmentSelectRGB(bitmap, 1);
                 iv.setImageBitmap(bitmap);
                 return true;
             case R.id.contrast_B:
-                bitmap = contrastAugmentB(bitmap);
+                bitmap = contrastAugmentSelectRGB(bitmap, 2);
                 iv.setImageBitmap(bitmap);
                 return true;
 
@@ -1327,15 +1405,15 @@ public class MainActivity extends AppCompatActivity {
 //----------------------------------------------------------
 
             case R.id.contrast_H:
-                bitmap =contrastAugmentH(bitmap);
+                bitmap = contrastAugmentSelectHSV(bitmap, 0);
                 iv.setImageBitmap(bitmap);
                 return true;
             case R.id.contrast_S:
-                bitmap = contrastAugmentS(bitmap);
+                bitmap = contrastAugmentSelectHSV(bitmap, 1);
                 iv.setImageBitmap(bitmap);
                 return true;
             case R.id.contrast_V:
-                bitmap = contrastAugmentV(bitmap);
+                bitmap = contrastAugmentSelectHSV(bitmap, 2);
                 iv.setImageBitmap(bitmap);
                 return true;
 
