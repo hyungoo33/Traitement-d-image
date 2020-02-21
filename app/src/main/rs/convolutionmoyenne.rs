@@ -15,7 +15,7 @@ int filterSize = 3;
 void root(const uchar4* in, uchar4* out,uint32_t x, uint32_t y){
 
     float4 moy = 0;
-    const uchar4* kin = in - filterSize*(imageWidth+1);
+    const uchar4* kin = in - filterSize*(imageWidth+1)/2;
     for(int i = 0; i < filterSize; i++){
         for(int j = 0; j < filterSize; j++){
 
