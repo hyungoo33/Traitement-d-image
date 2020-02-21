@@ -4,12 +4,15 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Menu;
@@ -18,7 +21,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.view.View.OnClickListener;
+import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Random;
 
@@ -30,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
     BitmapFactory.Options options = new BitmapFactory.Options();
     Button cameraButton;
     Button galleryButton;
+    Button saveButton;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         Button buttonReset = findViewById(R.id.reset_btn);
         cameraButton = findViewById(R.id.camera_btn);
         galleryButton = findViewById(R.id.load_btn);
+        saveButton = findViewById(R.id.buttonSave);
         options.inSampleSize = 1;
         options.inMutable = true;
         bitmap = BitmapFactory.decodeResource(getResources(),idImage,options);
@@ -64,7 +75,17 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("jjjg");
+                System.out.println(bitmap.getWidth());
+                Save saveFile = new Save();
+                saveFile.SaveImage(MainActivity.this,bitmap);
+            }
 
+
+        });
         iv.setImageBitmap(bitmap);
 
 
@@ -1040,7 +1061,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
         Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
-        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
+        result.setPixels(newPixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
         return result;
     }
 
@@ -1080,7 +1101,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
         Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
-        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
+        result.setPixels(newPixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
         return result;
     }
 
@@ -1118,7 +1139,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
         Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
-        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
+        result.setPixels(newPixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
         return result;
     }
 
@@ -1167,7 +1188,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
         Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
-        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
+        result.setPixels(newPixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
         return result;
     }
 

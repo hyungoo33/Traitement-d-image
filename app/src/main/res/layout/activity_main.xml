@@ -10,14 +10,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:layout_gravity="center"
-        android:layout_weight="10">
+        android:layout_marginBottom="20dp"
+        android:layout_weight="10"
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="400dp"
+            android:layout_height="400dp"
             android:layout_gravity="center" />
     </LinearLayout>
     <LinearLayout
@@ -54,6 +55,13 @@
             android:layout_gravity="center"
             android:text="camera"
         />
+
+        <Button
+            android:id="@+id/buttonSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Save" />
 
     </LinearLayout>
 </LinearLayout>
