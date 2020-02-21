@@ -43,6 +43,22 @@ public class ImageScripts extends AppCompatActivity {
         colorScript.destroy();rs.destroy();
 
     }
+    public void convolutionMoyenneRs(Bitmap bp){
+        android.renderscript.RenderScript rs = android.renderscript.RenderScript.create(this);
+
+        Allocation input = Allocation.createFromBitmap(rs,bp);
+        Allocation output = Allocation.createTyped(rs,input.getType());
+        ScriptC_convolutionmoyenne moyScript = new ScriptC_convolutionmoyenne(rs);
+
+        moyScript.set_in(input);
+        moyScript.set_filterSize(3);
+        output.copyTo(bp);
+
+        input.destroy();output.destroy();
+        moyScript.destroy();rs.destroy();
+
+
+    }
 
 
 
