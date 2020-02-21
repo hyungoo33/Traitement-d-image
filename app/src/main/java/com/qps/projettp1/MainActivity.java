@@ -456,6 +456,7 @@ public class MainActivity extends AppCompatActivity {
         result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
         return result;
     }
+
     private Bitmap contrastAugmentB(Bitmap bmp){
         int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
         int[] dynamique = dynamiqueRGB(bmp);
