@@ -13,7 +13,7 @@
     <bookmark url="file://$PROJECT_DIR$/app/src/main/java/com/qps/projettp1/MainActivity.java" line="38" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a29e0453-1789-4469-9571-52d473370006" name="Default Changelist" comment="Test commit">
+    <list default="true" id="a29e0453-1789-4469-9571-52d473370006" name="Default Changelist" comment="Factorisation de fonctions">
       <change beforePath="/autofs/unitytravail/travail/mpin003/L3/Android/Traitement-d-image/.idea/workspace.xml" beforeDir="false" afterPath="/autofs/unitytravail/travail/mpin003/L3/Android/Traitement-d-image/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -39,8 +39,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file:///autofs/unitytravail/travail/mpin003/L3/Android/Traitement-d-image/app/src/main/java/com/qps/projettp1/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2804">
-              <caret line="912" column="4" selection-start-line="912" selection-start-column="4" selection-end-line="912" selection-end-column="4" />
+            <state relative-caret-position="758">
+              <caret line="1444" selection-start-line="1444" selection-end-line="1444" />
               <folding>
                 <element signature="e#1908#2152#0" expanded="true" />
                 <element signature="e#2151#2152#0" expanded="true" />
@@ -309,12 +309,12 @@
       <window_info id="Designer" order="6" />
       <window_info id="Resources Explorer" order="7" />
       <window_info id="Capture Tool" order="8" />
-      <window_info anchor="bottom" id="Messages" sideWeight="0.4988067" visible="true" weight="0.32921812" />
-      <window_info anchor="bottom" id="Version Control" order="0" sideWeight="0.49960223" weight="0.32921812" />
+      <window_info anchor="bottom" id="Messages" sideWeight="0.4988067" weight="0.32921812" />
+      <window_info anchor="bottom" id="Version Control" order="0" sideWeight="0.49920446" weight="0.32921812" />
       <window_info anchor="bottom" id="Logcat" order="1" weight="0.32827735" />
       <window_info anchor="bottom" id="TODO" order="2" weight="0.32936078" />
       <window_info anchor="bottom" id="Terminal" order="3" weight="0.32983795" />
-      <window_info anchor="bottom" id="Event Log" order="4" sideWeight="0.50119334" side_tool="true" visible="true" weight="0.32921812" />
+      <window_info anchor="bottom" id="Event Log" order="4" sideWeight="0.50079554" side_tool="true" weight="0.32921812" />
       <window_info anchor="bottom" id="Build" order="5" weight="0.2136401" />
       <window_info anchor="bottom" id="Android Profiler" order="6" sideWeight="0.4994664" weight="0.47778982" />
       <window_info anchor="bottom" id="Run" order="7" weight="0.33004114" />
@@ -341,7 +341,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Application des filtres sur les images capturer et les images de la galerie." />
     <MESSAGE value="Test commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Test commit" />
+    <MESSAGE value="Factorisation de fonctions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Factorisation de fonctions" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file:///autofs/unitytravail/travail/hwalle/ProjetTP1/app/src/main/res/layout/activity_main.xml" />
@@ -420,8 +421,8 @@
     </entry>
     <entry file="file:///autofs/unitytravail/travail/mpin003/L3/Android/Traitement-d-image/app/src/main/java/com/qps/projettp1/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2804">
-          <caret line="912" column="4" selection-start-line="912" selection-start-column="4" selection-end-line="912" selection-end-column="4" />
+        <state relative-caret-position="758">
+          <caret line="1444" selection-start-line="1444" selection-end-line="1444" />
           <folding>
             <element signature="e#1908#2152#0" expanded="true" />
             <element signature="e#2151#2152#0" expanded="true" />
