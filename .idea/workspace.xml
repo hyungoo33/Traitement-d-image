@@ -13,11 +13,7 @@
     <bookmark url="file://$PROJECT_DIR$/app/src/main/java/com/qps/projettp1/MainActivity.java" line="38" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a29e0453-1789-4469-9571-52d473370006" name="Default Changelist" comment="">
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement-d-image/.idea/workspace.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement-d-image/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement-d-image/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement-d-image/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement-d-image/app/src/main/java/com/qps/projettp1/MainActivity.java" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement-d-image/app/src/main/java/com/qps/projettp1/MainActivity.java" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement-d-image/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement-d-image/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+    <list default="true" id="a29e0453-1789-4469-9571-52d473370006" name="Default Changelist" comment="save picture into gallery">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,11 +34,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file:///autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement-d-image/app/src/main/java/com/qps/projettp1/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1935">
-              <caret line="79" column="41" selection-start-line="79" selection-start-column="41" selection-end-line="79" selection-end-column="41" />
+            <state relative-caret-position="-180">
+              <caret line="235" column="9" lean-forward="true" selection-start-line="235" selection-start-column="9" selection-end-line="235" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2514#2837#0" expanded="true" />
@@ -52,7 +48,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file:///autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement-d-image/app/src/main/java/com/qps/projettp1/Save.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="263">
@@ -99,6 +95,7 @@
     </findStrings>
   </component>
   <component name="Git.Settings">
+    <option name="ROOT_SYNC" value="SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
@@ -338,7 +335,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-3" y="31" width="1926" height="1011" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info content_ui="combo" id="Project" order="1" weight="0.30683032" />
@@ -353,7 +349,7 @@
       <window_info anchor="bottom" id="Logcat" order="1" weight="0.32757202" />
       <window_info anchor="bottom" id="TODO" order="2" weight="0.32936078" />
       <window_info anchor="bottom" id="Terminal" order="3" weight="0.32887402" />
-      <window_info anchor="bottom" id="Event Log" order="4" sideWeight="0.50053364" side_tool="true" weight="0.97140133" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="4" sideWeight="0.50053364" side_tool="true" visible="true" weight="0.83040935" />
       <window_info anchor="bottom" id="Build" order="5" weight="0.19486581" />
       <window_info anchor="bottom" id="Android Profiler" order="6" show_stripe_button="false" sideWeight="0.4994664" weight="0.47778982" />
       <window_info anchor="bottom" id="Run" order="7" visible="true" weight="0.32282713" />
@@ -370,7 +366,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Application des filtres sur les images capturer et les images de la galerie." />
     <MESSAGE value="modification de la taille de l'image du galerie" />
-    <option name="LAST_COMMIT_MESSAGE" value="modification de la taille de l'image du galerie" />
+    <MESSAGE value="save picture into gallery" />
+    <option name="LAST_COMMIT_MESSAGE" value="save picture into gallery" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file:///autofs/unitytravail/travail/hwalle/ProjetTP1/app/src/main/res/layout/activity_main.xml" />
@@ -438,24 +435,24 @@
       </provider>
       <provider selected="true" editor-type-id="android-designer2" />
     </entry>
-    <entry file="file:///autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement-d-image/app/src/main/java/com/qps/projettp1/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1935">
-          <caret line="79" column="41" selection-start-line="79" selection-start-column="41" selection-end-line="79" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2514#2837#0" expanded="true" />
-            <element signature="e#2836#2837#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement-d-image/app/src/main/java/com/qps/projettp1/Save.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="263">
           <caret line="50" column="57" selection-start-line="50" selection-start-column="57" selection-end-line="50" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement-d-image/app/src/main/java/com/qps/projettp1/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-180">
+          <caret line="235" column="9" lean-forward="true" selection-start-line="235" selection-start-column="9" selection-end-line="235" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2514#2837#0" expanded="true" />
+            <element signature="e#2836#2837#0" expanded="true" />
           </folding>
         </state>
       </provider>
