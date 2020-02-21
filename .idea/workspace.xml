@@ -13,13 +13,8 @@
     <bookmark url="file://$PROJECT_DIR$/app/src/main/java/com/qps/projettp1/MainActivity.java" line="48" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a29e0453-1789-4469-9571-52d473370006" name="Default Changelist" comment="Plus de factorisation de fonctions">
-      <change beforePath="/autofs/unitytravail/travail/mpin003/L3/Android/Traitement-d-image/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="/autofs/unitytravail/travail/mpin003/L3/Android/Traitement-d-image/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="/autofs/unitytravail/travail/mpin003/L3/Android/Traitement-d-image/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="/autofs/unitytravail/travail/mpin003/L3/Android/Traitement-d-image/.idea/caches/gradle_models.ser" afterDir="false" />
+    <list default="true" id="a29e0453-1789-4469-9571-52d473370006" name="Default Changelist" comment="">
       <change beforePath="/autofs/unitytravail/travail/mpin003/L3/Android/Traitement-d-image/.idea/workspace.xml" beforeDir="false" afterPath="/autofs/unitytravail/travail/mpin003/L3/Android/Traitement-d-image/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="/autofs/unitytravail/travail/mpin003/L3/Android/Traitement-d-image/app/app.iml" beforeDir="false" afterPath="/autofs/unitytravail/travail/mpin003/L3/Android/Traitement-d-image/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,14 +35,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file:///autofs/unitytravail/travail/mpin003/L3/Android/Traitement-d-image/app/src/main/java/com/qps/projettp1/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="10815">
-              <caret line="757" column="4" selection-start-line="757" selection-start-column="4" selection-end-line="757" selection-end-column="4" />
+            <state relative-caret-position="1032">
+              <caret line="614" column="35" lean-forward="true" selection-start-line="614" selection-start-column="35" selection-end-line="614" selection-end-column="35" />
               <folding>
                 <element signature="e#2227#2502#0" expanded="true" />
                 <element signature="e#2501#2502#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file:///autofs/unitytravail/travail/mpin003/L3/Android/Traitement-d-image/app/src/main/java/com/qps/projettp1/Histogram.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file:///autofs/unitytravail/travail/mpin003/L3/Android/Traitement-d-image/app/src/main/java/com/qps/projettp1/BasicModifications.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="33" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -79,6 +98,7 @@
     <findStrings>
       <find>gray</find>
       <find>RGBtoHSV</find>
+      <find>histogram</find>
     </findStrings>
     <replaceStrings>
       <replace>tools.RGBtoHSV</replace>
@@ -105,6 +125,8 @@
         <option value="/autofs/unitytravail/travail/mpin003/L3/Android/Traitement-d-image/app/src/main/java/com/qps/projettp1/RGBHSVConvertions.java" />
         <option value="/autofs/unitytravail/travail/mpin003/L3/Android/Traitement-d-image/app/src/main/rs/RGBHSVConvert.java" />
         <option value="/autofs/unitytravail/travail/mpin003/L3/Android/Traitement-d-image/app/src/main/java/com/qps/projettp1/Tools.java" />
+        <option value="/autofs/unitytravail/travail/mpin003/L3/Android/Traitement-d-image/app/src/main/java/com/qps/projettp1/Histogram.java" />
+        <option value="/autofs/unitytravail/travail/mpin003/L3/Android/Traitement-d-image/app/src/main/java/com/qps/projettp1/BasicModifications.java" />
         <option value="/autofs/unitytravail/travail/mpin003/L3/Android/Traitement-d-image/app/src/main/java/com/qps/projettp1/MainActivity.java" />
       </list>
     </option>
@@ -333,7 +355,7 @@
       <window_info id="Designer" order="6" />
       <window_info id="Resources Explorer" order="7" weight="0.32975337" />
       <window_info id="Capture Tool" order="8" />
-      <window_info anchor="bottom" id="Version Control" order="0" sideWeight="0.49920446" weight="0.3286771" />
+      <window_info anchor="bottom" id="Version Control" order="0" sideWeight="0.49920446" weight="0.32839507" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Logcat" order="2" weight="0.32827735" />
       <window_info anchor="bottom" id="Terminal" order="3" weight="0.32983795" />
@@ -368,7 +390,8 @@
     <MESSAGE value="Test commit" />
     <MESSAGE value="Factorisation de fonctions" />
     <MESSAGE value="Plus de factorisation de fonctions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Plus de factorisation de fonctions" />
+    <MESSAGE value="Déplacement de fonctions utilitaires dans Tools et clarification du code dans MainActivity." />
+    <option name="LAST_COMMIT_MESSAGE" value="Déplacement de fonctions utilitaires dans Tools et clarification du code dans MainActivity." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file:///autofs/unitytravail/travail/hwalle/ProjetTP1/app/src/main/res/layout/activity_main.xml" />
@@ -493,13 +516,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///autofs/unitytravail/travail/mpin003/L3/Android/Traitement-d-image/app/src/main/java/com/qps/projettp1/BasicModifications.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="33" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file:///autofs/unitytravail/travail/mpin003/L3/Android/Traitement-d-image/app/src/main/java/com/qps/projettp1/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10815">
-          <caret line="757" column="4" selection-start-line="757" selection-start-column="4" selection-end-line="757" selection-end-column="4" />
+        <state relative-caret-position="1032">
+          <caret line="614" column="35" lean-forward="true" selection-start-line="614" selection-start-column="35" selection-end-line="614" selection-end-column="35" />
           <folding>
             <element signature="e#2227#2502#0" expanded="true" />
             <element signature="e#2501#2502#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///autofs/unitytravail/travail/mpin003/L3/Android/Traitement-d-image/app/src/main/java/com/qps/projettp1/Histogram.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
