@@ -25,8 +25,6 @@ import java.util.Calendar;
 import androidx.core.app.ActivityCompat;
 
 import static androidx.core.app.ActivityCompat.requestPermissions;
-
-
 public class Save extends Activity {
     private Context context;
     private String nameOfFoledr = "/Mehdi_Image";
@@ -55,12 +53,11 @@ public class Save extends Activity {
             AbleToSave();
             
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            UnableToSave();
         } catch (IOException e) {
             UnableToSave();
         }
     }
-
 
 
     private void UnableToSave() {
