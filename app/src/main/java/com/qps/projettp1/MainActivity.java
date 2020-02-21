@@ -38,8 +38,10 @@ public class MainActivity extends AppCompatActivity {
     Button cameraButton;
     Button galleryButton;
     Button saveButton;
-    Tools tools = new Tools();
 
+    Tools tools = new Tools();
+    BasicModifications basicModifications = new BasicModifications();
+    Histogram histogram = new Histogram();
 
 
     @Override
@@ -89,7 +91,6 @@ public class MainActivity extends AppCompatActivity {
         });
         iv.setImageBitmap(bitmap);
 
-
     }
 
 
@@ -110,154 +111,6 @@ public class MainActivity extends AppCompatActivity {
             iv.setImageBitmap(bitmap);
         }
      }
-
-    //----------------------------------------------------------
-
-    //------------------ Basic modifications -------------------
-
-    //----------------------------------------------------------
-
-    private Bitmap toGrayFast(Bitmap bp){
-
-        int[] pixels = new int[bp.getHeight()*bp.getWidth()];
-        bp.getPixels(pixels, 0, bp.getWidth(), 0, 0, bp.getWidth(), bp.getHeight());
-        for(int i = 0; i<bp.getHeight()*bp.getWidth();i++){
-            int alpha = Color.alpha(pixels[i]);
-            int red = Color.red(pixels[i]);
-            int green = Color.green(pixels[i]);
-            int blue = Color.blue(pixels[i]);
-            int gray = (int)(0.3*red + 0.59*green + 0.11*blue);
-            pixels[i] = (alpha << 24) | (gray << 16) | (gray << 8) | gray;
-        }
-        Bitmap result = Bitmap.createBitmap(bp.getWidth(),bp.getHeight(),Bitmap.Config.ARGB_8888);
-        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
-        return result;
-    }
-
-
-
-    private Bitmap colorize(Bitmap bmp){
-        int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
-        float[] hsv = new float[3];
-        int hue = new Random().nextInt(360);
-        bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
-        for(int i = 0; i<bmp.getHeight()*bmp.getWidth();i++){
-            int red = Color.red(pixels[i]);
-            int green = Color.green(pixels[i]);
-            int blue = Color.blue(pixels[i]);
-            tools.RGBtoHSV(red,green,blue,hsv);
-            hsv[0]= hue;
-            pixels[i]=tools.HSVtoRGB(hsv);
-
-        }
-        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
-        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
-        return result;
-    }
-
-
-
-    private Bitmap isolateColor(Bitmap bmp){
-        int range = 30;
-        int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
-        float[] hsv = new float[3];
-        int hue = new Random().nextInt(360);
-
-        bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
-        for(int i = 0; i<bmp.getHeight()*bmp.getWidth();i++){
-            int alpha = Color.alpha(pixels[i]);
-            int red = Color.red(pixels[i]);
-            int green = Color.green(pixels[i]);
-            int blue = Color.blue(pixels[i]);
-            tools.RGBtoHSV(red,green,blue,hsv);
-            int gray = (int)(0.3*red + 0.59*green + 0.11*blue);
-            float H = hsv[0];
-            if(hue>=range && hue<360-range) {
-                if (H >= (hue + range) || H <= hue - range) {
-                    pixels[i] = (alpha << 24) | (gray << 16) | (gray << 8) | gray;
-                }
-            }
-            else
-                if(H >= (hue + range) % 360 && H <= (hue - range + 360)%360){
-                    pixels[i] = (alpha << 24) | (gray << 16) | (gray << 8) | gray;
-                }
-        }
-        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
-        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
-        return result;
-    }
-
-    //----------------------------------------------------------
-
-    //----------------------- Histogram ------------------------
-
-    //----------------------------------------------------------
-
-    private int[] histogram(Bitmap bmp){
-        int[] hist = new int[256];
-        int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
-
-        bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
-        for(int i = 0; i < bmp.getWidth()*bmp.getHeight(); i++){
-            int red = Color.red(pixels[i]);
-            int green = Color.green(pixels[i]);
-            int blue = Color.blue(pixels[i]);
-            int gray =(int)(0.3*red + 0.59*green + 0.11*blue);
-            hist[gray]++;
-
-        }
-
-        return hist;
-    }
-
-
-    private int[][]histogramRGB(Bitmap bmp){
-        int[] histR = new int[256];
-        int[] histG = new int[256];
-        int[] histB = new int[256];
-        int[][] hist = new int[3][256];
-        int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
-
-        bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
-        for(int i = 0; i < bmp.getWidth()*bmp.getHeight(); i++){
-            int red = Color.red(pixels[i]);
-            int green = Color.green(pixels[i]);
-            int blue = Color.blue(pixels[i]);
-            histR[red]++;
-            histG[green]++;
-            histB[blue]++;
-        }
-        hist[0] = histR;
-        hist[1] = histG;
-        hist[2] = histB;
-        return hist;
-    }
-
-
-    private int[][]histogramHSV(Bitmap bmp){
-        int[] histH = new int[360];
-        int[] histS = new int[360];
-        int[] histV = new int[360];
-        int[][] hist = new int[3][360];
-        float[] hsv = new float[3];
-        int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
-
-        bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
-        for(int i = 0; i < bmp.getWidth()*bmp.getHeight(); i++){
-            int red = Color.red(pixels[i]);
-            int green = Color.green(pixels[i]);
-            int blue = Color.blue(pixels[i]);
-            tools.RGBtoHSV(red,green,blue,hsv);
-            histH[(int)hsv[0]]++;
-            histS[(int)(hsv[1]*359.0f)]++;
-            histV[(int)(hsv[2]*359.0f)]++;
-        }
-        hist[0] = histH;
-        hist[1] = histS;
-        hist[2] = histV;
-        return hist;
-    }
-
 
 
     //----------------------------------------------------------
@@ -599,7 +452,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Bitmap equalizate(Bitmap bmp){
         long N = bmp.getWidth()*bmp.getHeight();
-        int[] h = histogram(bmp);
+        int[] h = histogram.histogram(bmp);
         int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
         long[] C = new long[256];
 
@@ -636,7 +489,7 @@ public class MainActivity extends AppCompatActivity {
     private Bitmap equalizationSelectRGB(Bitmap bmp, int RGB) {
         int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
         long N = bmp.getWidth()*bmp.getHeight();
-        int[][] h = histogramRGB(bmp);
+        int[][] h = histogram.histogramRGB(bmp);
         int[] hVal = h[RGB];
         long[] C = new long[256];
         for(int k = 0; k < 255; k++){
@@ -677,7 +530,7 @@ public class MainActivity extends AppCompatActivity {
     private Bitmap equalizationRGB(Bitmap bmp){                                                       // function to equalize R, G and B at once
         int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
         long N = bmp.getWidth()*bmp.getHeight();
-        int[][] h = histogramRGB(bmp);
+        int[][] h = histogram.histogramRGB(bmp);
         int[] hR = h[0];
         int[] hG = h[1];
         int[] hB = h[2];
@@ -721,7 +574,7 @@ public class MainActivity extends AppCompatActivity {
         int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
         float[] hsv = new float[3];
         long N = bmp.getWidth()*bmp.getHeight();
-        int[][] h = histogramHSV(bmp);
+        int[][] h = histogram.histogramHSV(bmp);
         int[] hVal = h[HSV];
         long[] C = new long[360];
         for(int k = 0; k < 360; k++){
@@ -761,7 +614,7 @@ public class MainActivity extends AppCompatActivity {
         int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
         float[] hsv = new float[3];
         long N = bmp.getWidth()*bmp.getHeight();
-        int[][] h = histogramHSV(bmp);
+        int[][] h = histogram.histogramHSV(bmp);
         int[] hH = h[0];
         int[] hS = h[1];
         int[] hV = h[2];
@@ -1001,15 +854,15 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.gray:
-                bitmap = toGrayFast(bitmap);
+                bitmap = basicModifications.toGrayFast(bitmap);
                 iv.setImageBitmap(bitmap);
                 return true;
             case R.id.colorize:
-                bitmap = colorize(bitmap);
+                bitmap = basicModifications.colorize(bitmap);
                 iv.setImageBitmap(bitmap);
                 return true;
             case R.id.isolate:
-                bitmap = isolateColor(bitmap);
+                bitmap = basicModifications.isolateColor(bitmap);
                 iv.setImageBitmap(bitmap);
                 return true;
             case R.id.contrast_augment:
