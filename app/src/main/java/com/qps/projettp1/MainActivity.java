@@ -710,7 +710,50 @@ public class MainActivity extends AppCompatActivity {
     //------------equalization : RGB-----------
     //----------------------------------------
 
+    // The RGB parameter is used to select the component to modify :
+    // 0 = R ; 1 = G ; 2 = B
+    private Bitmap equalizationSelectRGB(Bitmap bmp, int RGB) {
+        int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
+        long N = bmp.getWidth()*bmp.getHeight();
+        int[][] h = histogramRGB(bmp);
+        int[] hVal = h[RGB];
+        long[] C = new long[256];
+        for(int k = 0; k < 255; k++){
+            for(int i = 0;i <= k; i++){
+                C[k] += hVal[i];
+            }
+        }
+        bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
 
+        for(int i = 0; i < bmp.getWidth()*bmp.getHeight(); i++){
+            int alpha = Color.alpha(pixels[i]);
+            int red = Color.red(pixels[i]);
+            int green = Color.green(pixels[i]);
+            int blue = Color.blue(pixels[i]);
+
+            switch (RGB) {
+                case 0:
+                    long newRed = (C[red]*255)/N;
+                    pixels[i] = (alpha << 24) | ((int)newRed << 16) | (green << 8) | blue;
+                    break;
+                case 1:
+                    long newGreen = (C[green]*255)/N;
+                    pixels[i] = (alpha << 24) | (red << 16) | ((int)newGreen << 8) | blue;
+                    break;
+                case 2:
+                    long newBlue = (C[blue]*255)/N;
+                    pixels[i] = (alpha << 24) | (red << 16) | (green << 8) | (int)newBlue;
+                    break;
+            }
+        }
+
+        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
+        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
+        return result;
+    }
+
+    // The methods below are now replaced by the single method above.
+    /*
     private Bitmap equalizationR(Bitmap bmp){
         int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
         long N = bmp.getWidth()*bmp.getHeight();
@@ -786,6 +829,8 @@ public class MainActivity extends AppCompatActivity {
         result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
         return result;
     }
+    */
+
     private Bitmap equalizationRGB(Bitmap bmp){                                                       // function to equalize R, G and B at once
         int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
         long N = bmp.getWidth()*bmp.getHeight();
@@ -825,7 +870,49 @@ public class MainActivity extends AppCompatActivity {
     //------------equalization : HSV-------------
     //------------------------------------------
 
+    // The HSV parameter is used to select the component to modify :
+    // 0 = H ; 1 = S ; 2 = V
+    private Bitmap equalizationSelectHSV(Bitmap bmp, int HSV) {
+        int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
+        float[] hsv = new float[3];
+        long N = bmp.getWidth()*bmp.getHeight();
+        int[][] h = histogramHSV(bmp);
+        int[] hVal = h[HSV];
+        long[] C = new long[360];
+        for(int k = 0; k < 360; k++){
+            for(int i = 0;i <= k; i++){
+                C[k] += hVal[i];
+            }
+        }
+        bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
 
+        for(int i = 0; i < bmp.getWidth()*bmp.getHeight(); i++){
+            int red = Color.red(pixels[i]);
+            int green = Color.green(pixels[i]);
+            int blue = Color.blue(pixels[i]);
+            RGBtoHSV(red,green,blue,hsv);
+
+            switch (HSV) {
+                case 0:
+                    hsv[0] = C[(int)hsv[0]]*359.0f/N;
+                    break;
+                case 1:
+                    hsv[1] = C[(int)(hsv[1]*359)]*1.0f/N;
+                    break;
+                case 2:
+                    hsv[2] = C[(int)(hsv[2]*359)]*1.0f/N;
+                    break;
+            }
+            pixels[i] = HSVtoRGB(hsv);
+        }
+
+        Bitmap result = Bitmap.createBitmap(bmp.getWidth(),bmp.getHeight(),Bitmap.Config.ARGB_8888);
+        result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
+        return result;
+    }
+
+    // The methods below are now replaced by the single method above.
+    /*
     private Bitmap equalizationH(Bitmap bmp){
         int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
         float[] hsv = new float[3];
@@ -872,7 +959,6 @@ public class MainActivity extends AppCompatActivity {
             int blue = Color.blue(pixels[i]);
             RGBtoHSV(red,green,blue,hsv);
             hsv[1] = CS[(int)(hsv[1]*359)]*1.0f/N;
-
             pixels[i] = HSVtoRGB(hsv);
 
         }
@@ -900,7 +986,6 @@ public class MainActivity extends AppCompatActivity {
             int blue = Color.blue(pixels[i]);
             RGBtoHSV(red,green,blue,hsv);
             hsv[2] = CV[(int)(hsv[2]*359)]*1.0f/N;
-
             pixels[i] = HSVtoRGB(hsv);
 
         }
@@ -908,6 +993,7 @@ public class MainActivity extends AppCompatActivity {
         result.setPixels(pixels,0,result.getWidth(),0,0,result.getWidth(),result.getHeight());
         return result;
     }
+    */
 
     private Bitmap equalizationHSV(Bitmap bmp){                                                       // function to equalize H, S and V at once
         int[] pixels = new int[bmp.getHeight()*bmp.getWidth()];
@@ -1261,15 +1347,15 @@ public class MainActivity extends AppCompatActivity {
                 return true;
 
             case R.id.egalise_R:
-                bitmap = equalizationR(bitmap);
+                bitmap = equalizationSelectRGB(bitmap, 0);
                 iv.setImageBitmap(bitmap);
                 return true;
             case R.id.egalise_G:
-                bitmap = equalizationG(bitmap);
+                bitmap = equalizationSelectRGB(bitmap, 1);
                 iv.setImageBitmap(bitmap);
                 return true;
             case R.id.egalise_B:
-                bitmap = equalizationB(bitmap);
+                bitmap = equalizationSelectRGB(bitmap, 2);
                 iv.setImageBitmap(bitmap);
                 return true;
             case R.id.egalise_RGB:
@@ -1278,15 +1364,15 @@ public class MainActivity extends AppCompatActivity {
 //----------------------------------------------------------
 
             case R.id.egalise_H:
-                bitmap = equalizationH(bitmap);
+                bitmap = equalizationSelectHSV(bitmap, 0);
                 iv.setImageBitmap(bitmap);
                 return true;
             case R.id.egalise_S:
-                bitmap = equalizationS(bitmap);
+                bitmap = equalizationSelectHSV(bitmap, 1);
                 iv.setImageBitmap(bitmap);
                 return true;
             case R.id.egalise_V:
-                bitmap = equalizationV(bitmap);
+                bitmap = equalizationSelectHSV(bitmap, 2);
                 iv.setImageBitmap(bitmap);
                 return true;
             case R.id.egalise_HSV:
