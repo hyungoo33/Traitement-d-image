@@ -1,5 +1,5 @@
 # pragma version (1)
-# pragma rs java_package_name ( com.qps.renderscript )
+# pragma rs java_package_name ( com.qps.projettp1)
 # pragma rs fp relaxed
 
 int hue;
