@@ -667,11 +667,19 @@ public class MainActivity extends AppCompatActivity {
     int[] h1Prewitt = {-1,0,1,-1,0,1,-1,0,1};
     int[] h2Prewitt = {-1,-1,-1,0,0,0,1,1,1};
 
-    int[] h1Sobel = {-1,0,1,-1,0,1,-1,0,1};
-    int[] h2Sobel = {-1,-1,-1,0,0,0,1,1,1};
+    int[] h1Sobel = {-1,0,1,-2,0,2,-1,0,1};
+    int[] h2Sobel = {-1,-2,-1,0,0,0,1,2,1};
 
     int[] hLaplace4 ={0,1,0,1,-4,1,0,1,0};
     int[] hLaplace8 ={1,1,1,1,-8,1,1,1,1};
+
+    float[] h1Prewittf = {-1.f,0.f,1.f,-1.f,0.f,1.f,-1.f,0.f,1.f};
+    float[] h2Prewittf = {-1.f,-1.f,-1.f,0.f,0.f,0.f,1.f,1.f,1.f};
+    float[] h1Sobelf = {-1.f,0.f,1.f,-2.f,0.f,2.f,-1.f,0.f,1.f};
+    float[] h2Sobelf = {-1.f,-2.f,-1.f,0.f,0.f,0.f,2.f,1.f,1.f};
+    float[] hLaplace4f = {0.f,1.f,0.f,1.f,-4.f,1.f,0.f,1.f,0.f};
+    float[] hLaplace8f = {1.f,1.f,1.f,1.f,-8.f,1.f,1.f,1.f,1.f};
+
 
     private Bitmap convolution(Bitmap bmp,int n,int filtre){
         int[] pixels = new int[bmp.getHeight() * bmp.getWidth()];
@@ -861,12 +869,10 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.gray:
-                bitmap = basicModifications.toGrayFast(bitmap);
-                iv.setImageBitmap(bitmap);
+               scripts.toGrayRs(bitmap);
                 return true;
             case R.id.colorize:
-                bitmap = basicModifications.colorize(bitmap);
-                iv.setImageBitmap(bitmap);
+                scripts.coloriseRS(bitmap);
                 return true;
             case R.id.isolate:
                 bitmap = basicModifications.isolateColor(bitmap);
@@ -962,21 +968,17 @@ public class MainActivity extends AppCompatActivity {
                 return true;
 
             case R.id.detectHoriP:
-                bitmap = convDerivationHorizontal(bitmap,0);
-                iv.setImageBitmap(bitmap);
+                scripts.convolution3x3Rs(bitmap,h1Prewittf,true);
                 return true;
             case R.id.detectVertP:
-                bitmap = convDerivationVertical(bitmap,0);
-                iv.setImageBitmap(bitmap);
+                scripts.convolution3x3Rs(bitmap,h2Prewittf,true);
                 return true;
 
             case R.id.detectHoriS:
-                bitmap = convDerivationHorizontal(bitmap,1);
-                iv.setImageBitmap(bitmap);
+                scripts.convolution3x3Rs(bitmap,h1Sobelf,true);
                 return true;
             case R.id.detectVertS:
-                bitmap = convDerivationVertical(bitmap,1);
-                iv.setImageBitmap(bitmap);
+                scripts.convolution3x3Rs(bitmap,h2Sobelf,true);
                 return true;
 
             case R.id.contourPrewitt:
@@ -990,23 +992,16 @@ public class MainActivity extends AppCompatActivity {
                 return true;
 
             case R.id.laplace4:
-                bitmap = convolution(bitmap,1,2);
-                iv.setImageBitmap(bitmap);
+                scripts.convolution3x3Rs(bitmap,hLaplace4f,true);
                 return true;
             case R.id.laplace8:
-                bitmap = convolution(bitmap,1,3);
-                iv.setImageBitmap(bitmap);
+                scripts.convolution3x3Rs(bitmap,hLaplace8f,true);
                 return true;
 
             default:
                 return super.onContextItemSelected(item);
         }
     }
-
-
-
-
-
 
 
 
