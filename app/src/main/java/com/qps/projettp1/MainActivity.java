@@ -38,16 +38,20 @@ public class MainActivity extends AppCompatActivity {
     Button cameraButton;
     Button galleryButton;
     Button saveButton;
+    ImageScripts scripts = new ImageScripts();
 
     Tools tools = new Tools();
     BasicModifications basicModifications = new BasicModifications();
     Histogram histogram = new Histogram();
+    private static Context context;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        context = getApplicationContext();
         iv = findViewById(R.id.image);
         Button buttonReset = findViewById(R.id.reset_btn);
         cameraButton = findViewById(R.id.camera_btn);
@@ -111,6 +115,9 @@ public class MainActivity extends AppCompatActivity {
             iv.setImageBitmap(bitmap);
         }
      }
+    public static Context getContext(){
+        return context;
+    }
 
 
     //----------------------------------------------------------
@@ -947,8 +954,7 @@ public class MainActivity extends AppCompatActivity {
 //----------------------------------------------------------
 
             case R.id.moyenneur:
-                bitmap = convolution(bitmap,5,0);
-                iv.setImageBitmap(bitmap);
+                scripts.convolutionMoyenneRs(bitmap);
                 return true;
             case R.id.gauss5:
                 bitmap = convolution(bitmap,2,1);

@@ -4,38 +4,27 @@
 
 
 
-rs_allocation in;
-
 int imageWidth;
 int imageHeight;
 
 int filterSize = 3;
 
 
-void root(const uchar4* in, uchar4* out,uint32_t x, uint32_t y){
+void moyConv(const uchar4* in, uchar4* out,uint32_t x, uint32_t y){
+
 
     float4 moy = 0;
-    const uchar4* kin = in - filterSize*(imageWidth+1)/2;
-    for(int i = 0; i < filterSize; i++){
-        for(int j = 0; j < filterSize; j++){
+    int range = (filterSize - 1)/2;
+    for(int i = - range; i < range + 1; i++){
+        for(int j = - range; j < range + 1; j++){
 
-            moy += rsUnpackColor8888( kin[i*imageWidth + j]);
+            moy += rsUnpackColor8888(in[(int)fmod((float)i*imageWidth +j,(float)imageHeight*imageWidth)]);
         }
     }
-    moy /= 9.0f;
+    moy /= filterSize*filterSize;
     moy.a = 1.0f;
 
     *out = rsPackColorTo8888(moy);
 
 
-}
-
-void init(){
-
-}
-
-void setup(){
-
-    imageWidth = rsAllocationGetDimX(in);
-    imageHeight = rsAllocationGetDimY(in);
 }

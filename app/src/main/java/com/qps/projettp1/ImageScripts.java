@@ -12,7 +12,7 @@ public class ImageScripts extends AppCompatActivity {
 
     public void toGrayRs(Bitmap bp){
 
-        android.renderscript.RenderScript rs = android.renderscript.RenderScript.create(this);
+        android.renderscript.RenderScript rs = android.renderscript.RenderScript.create(MainActivity.getContext());
 
         Allocation input = Allocation.createFromBitmap(rs,bp);
         Allocation output = Allocation.createTyped(rs,input.getType());
@@ -28,7 +28,7 @@ public class ImageScripts extends AppCompatActivity {
 
     }
     public void ColoriseRS(Bitmap bp){
-        android.renderscript.RenderScript rs = android.renderscript.RenderScript.create(this);
+        android.renderscript.RenderScript rs = android.renderscript.RenderScript.create(MainActivity.getContext());
 
         Allocation input = Allocation.createFromBitmap(rs,bp);
         Allocation output = Allocation.createTyped(rs,input.getType());
@@ -44,14 +44,17 @@ public class ImageScripts extends AppCompatActivity {
 
     }
     public void convolutionMoyenneRs(Bitmap bp){
-        android.renderscript.RenderScript rs = android.renderscript.RenderScript.create(this);
+        android.renderscript.RenderScript rs = android.renderscript.RenderScript.create(MainActivity.getContext());
 
         Allocation input = Allocation.createFromBitmap(rs,bp);
         Allocation output = Allocation.createTyped(rs,input.getType());
         ScriptC_convolutionmoyenne moyScript = new ScriptC_convolutionmoyenne(rs);
 
-        moyScript.set_in(input);
-        moyScript.set_filterSize(3);
+        moyScript.set_filterSize(11);
+        moyScript.set_imageHeight(bp.getHeight());
+        moyScript.set_imageWidth(bp.getWidth());
+        moyScript.forEach_moyConv(input,output);
+
         output.copyTo(bp);
 
         input.destroy();output.destroy();
