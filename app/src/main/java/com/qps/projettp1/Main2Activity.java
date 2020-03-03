@@ -18,12 +18,15 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.view.View.OnClickListener;
 
+import com.github.chrisbanes.photoview.PhotoView;
+
 import java.io.IOException;
 
 public class Main2Activity extends AppCompatActivity {
 
     Bitmap bitmap;
-    ImageView iv;
+    //ImageView iv;
+    PhotoView photoView;
     int idImage;// = R.drawable.convolution;                                                           //set the image you want to use
     BitmapFactory.Options options = new BitmapFactory.Options();
     Button cameraButton;
@@ -45,7 +48,7 @@ public class Main2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
 
         context = getApplicationContext();
-        iv = findViewById(R.id.image);
+        photoView = findViewById(R.id.image);
         buttonReset = findViewById(R.id.reset_btn);
         cameraButton = findViewById(R.id.camera_btn);
         galleryButton = findViewById(R.id.load_btn);
@@ -92,7 +95,7 @@ public class Main2Activity extends AppCompatActivity {
 
 
         });
-        iv.setImageBitmap(bitmap);
+        photoView.setImageBitmap(bitmap);
 
     }
 
@@ -107,11 +110,11 @@ public class Main2Activity extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            iv.setImageURI(imageUri);
+            photoView.setImageURI(imageUri);
         }
         if(requestCode == 0){
             bitmap = (Bitmap ) data.getExtras().get("data");
-            iv.setImageBitmap(bitmap);
+            photoView.setImageBitmap(bitmap);
         }
          /**sauvgarde de l'image initiale */
          restoreImage = new int[bitmap.getWidth()*bitmap.getHeight()];
@@ -879,30 +882,30 @@ public class Main2Activity extends AppCompatActivity {
                 return true;
             case R.id.isolate:
                 bitmap = basicModifications.isolateColor(bitmap);
-                iv.setImageBitmap(bitmap);
+                photoView.setImageBitmap(bitmap);
                 return true;
             case R.id.contrast_augment:
                 bitmap = contrastAugment(bitmap);
-                iv.setImageBitmap(bitmap);
+                photoView.setImageBitmap(bitmap);
                 return true;
             case R.id.contrast_decrease:
                 bitmap = contrastDecrease(bitmap,20);
-                iv.setImageBitmap(bitmap);
+                photoView.setImageBitmap(bitmap);
                 return true;
 
 //----------------------------------------------------------
 
             case R.id.contrast_R:
                 bitmap = contrastAugmentSelectRGB(bitmap, 0);
-                iv.setImageBitmap(bitmap);
+                photoView.setImageBitmap(bitmap);
                 return true;
             case R.id.contrast_G:
                 bitmap = contrastAugmentSelectRGB(bitmap, 1);
-                iv.setImageBitmap(bitmap);
+                photoView.setImageBitmap(bitmap);
                 return true;
             case R.id.contrast_B:
                 bitmap = contrastAugmentSelectRGB(bitmap, 2);
-                iv.setImageBitmap(bitmap);
+                photoView.setImageBitmap(bitmap);
                 return true;
 
 
@@ -910,35 +913,35 @@ public class Main2Activity extends AppCompatActivity {
 
             case R.id.contrast_H:
                 bitmap = contrastAugmentSelectHSV(bitmap, 0);
-                iv.setImageBitmap(bitmap);
+                photoView.setImageBitmap(bitmap);
                 return true;
             case R.id.contrast_S:
                 bitmap = contrastAugmentSelectHSV(bitmap, 1);
-                iv.setImageBitmap(bitmap);
+                photoView.setImageBitmap(bitmap);
                 return true;
             case R.id.contrast_V:
                 bitmap = contrastAugmentSelectHSV(bitmap, 2);
-                iv.setImageBitmap(bitmap);
+                photoView.setImageBitmap(bitmap);
                 return true;
 
 //----------------------------------------------------------
 
             case R.id.egalise:
                 bitmap = equalizate(bitmap);
-                iv.setImageBitmap(bitmap);
+                photoView.setImageBitmap(bitmap);
                 return true;
 
             case R.id.egalise_R:
                 bitmap = equalizationSelectRGB(bitmap, 0);
-                iv.setImageBitmap(bitmap);
+                photoView.setImageBitmap(bitmap);
                 return true;
             case R.id.egalise_G:
                 bitmap = equalizationSelectRGB(bitmap, 1);
-                iv.setImageBitmap(bitmap);
+                photoView.setImageBitmap(bitmap);
                 return true;
             case R.id.egalise_B:
                 bitmap = equalizationSelectRGB(bitmap, 2);
-                iv.setImageBitmap(bitmap);
+                photoView.setImageBitmap(bitmap);
                 return true;
             case R.id.egalise_RGB:
                 return true;
@@ -947,15 +950,15 @@ public class Main2Activity extends AppCompatActivity {
 
             case R.id.egalise_H:
                 bitmap = equalizationSelectHSV(bitmap, 0);
-                iv.setImageBitmap(bitmap);
+                photoView.setImageBitmap(bitmap);
                 return true;
             case R.id.egalise_S:
                 bitmap = equalizationSelectHSV(bitmap, 1);
-                iv.setImageBitmap(bitmap);
+                photoView.setImageBitmap(bitmap);
                 return true;
             case R.id.egalise_V:
                 bitmap = equalizationSelectHSV(bitmap, 2);
-                iv.setImageBitmap(bitmap);
+                photoView.setImageBitmap(bitmap);
                 return true;
             case R.id.egalise_HSV:
                 return true;
@@ -967,7 +970,7 @@ public class Main2Activity extends AppCompatActivity {
                 return true;
             case R.id.gauss5:
                 bitmap = convolution(bitmap,2,1);
-                iv.setImageBitmap(bitmap);
+                photoView.setImageBitmap(bitmap);
                 return true;
 
             case R.id.detectHoriP:
@@ -986,12 +989,12 @@ public class Main2Activity extends AppCompatActivity {
 
             case R.id.contourPrewitt:
                 bitmap = contour(bitmap,0);
-                iv.setImageBitmap(bitmap);
+                photoView.setImageBitmap(bitmap);
                 return true;
 
             case R.id.contourSobel:
                 bitmap = contour(bitmap,1);
-                iv.setImageBitmap(bitmap);
+                photoView.setImageBitmap(bitmap);
                 return true;
 
             case R.id.laplace4:

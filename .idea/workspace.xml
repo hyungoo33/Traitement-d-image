@@ -14,103 +14,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a29e0453-1789-4469-9571-52d473370006" name="Default Changelist" comment="">
-      <change afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/Traitement.iml" afterDir="false" />
-      <change afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/src/main/res/drawable/background.jpg" afterDir="false" />
-      <change afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/src/main/res/drawable/continue_background.xml" afterDir="false" />
-      <change afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/src/main/res/drawable/gradient1.xml" afterDir="false" />
-      <change afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/src/main/res/drawable/gradient2.xml" afterDir="false" />
-      <change afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/src/main/res/drawable/gradient3.xml" afterDir="false" />
-      <change afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/src/main/res/drawable/gradient_list.xml" afterDir="false" />
-      <change afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/src/main/res/font/dancing_script.xml" afterDir="false" />
-      <change afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/src/main/res/values/font_certs.xml" afterDir="false" />
-      <change afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/src/main/res/values/preloaded_fonts.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Traitement.iml" afterDir="false" />
+      <change afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__com_github_chrisbanes_PhotoView_2_3_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_chrisbanes_PhotoView_2_3_0_aar.xml" afterDir="false" />
       <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/caches/gradle_models.ser" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_activity_activity_1_0_0_aar.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_activity_activity_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_annotation_annotation_1_1_0_jar.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_annotation_annotation_1_1_0_jar.xml" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_appcompat_appcompat_1_1_0_aar.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_appcompat_appcompat_1_1_0_aar.xml" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_appcompat_appcompat_resources_1_1_0_aar.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_appcompat_appcompat_resources_1_1_0_aar.xml" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_arch_core_core_common_2_1_0_jar.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_arch_core_core_common_2_1_0_jar.xml" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_arch_core_core_runtime_2_0_0_aar.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_arch_core_core_runtime_2_0_0_aar.xml" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_collection_collection_1_1_0_jar.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_collection_collection_1_1_0_jar.xml" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_1_1_3_aar.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_1_1_3_aar.xml" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_solver_1_1_3_jar.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_solver_1_1_3_jar.xml" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_core_core_1_1_0_aar.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_core_core_1_1_0_aar.xml" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_cursoradapter_cursoradapter_1_0_0_aar.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_cursoradapter_cursoradapter_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_customview_customview_1_0_0_aar.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_customview_customview_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_drawerlayout_drawerlayout_1_0_0_aar.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_drawerlayout_drawerlayout_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_fragment_fragment_1_1_0_aar.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_fragment_fragment_1_1_0_aar.xml" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_interpolator_interpolator_1_0_0_aar.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_interpolator_interpolator_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_common_2_1_0_jar.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_common_2_1_0_jar.xml" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_2_0_0_aar.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_2_0_0_aar.xml" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_core_2_0_0_aar.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_core_2_0_0_aar.xml" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_runtime_2_1_0_aar.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_runtime_2_1_0_aar.xml" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_2_1_0_aar.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_2_1_0_aar.xml" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_loader_loader_1_0_0_aar.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_loader_loader_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_savedstate_savedstate_1_0_0_aar.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_savedstate_savedstate_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_test_espresso_espresso_core_3_2_0_aar.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_test_espresso_espresso_core_3_2_0_aar.xml" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_test_espresso_espresso_idling_resource_3_2_0_aar.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_test_espresso_espresso_idling_resource_3_2_0_aar.xml" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_test_monitor_1_2_0_aar.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_test_monitor_1_2_0_aar.xml" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_test_runner_1_2_0_aar.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_test_runner_1_2_0_aar.xml" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_1_1_0_aar.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_1_1_0_aar.xml" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_animated_1_1_0_aar.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_animated_1_1_0_aar.xml" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_versionedparcelable_versionedparcelable_1_1_0_aar.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_versionedparcelable_versionedparcelable_1_1_0_aar.xml" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_viewpager_viewpager_1_0_0_aar.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__androidx_viewpager_viewpager_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__com_google_code_findbugs_jsr305_2_0_1_jar.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__com_google_code_findbugs_jsr305_2_0_1_jar.xml" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__com_squareup_javawriter_2_1_1_jar.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__com_squareup_javawriter_2_1_1_jar.xml" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__javax_inject_javax_inject_1_jar.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__javax_inject_javax_inject_1_jar.xml" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__junit_junit_4_12_jar.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__junit_junit_4_12_jar.xml" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__net_sf_kxml_kxml2_2_3_0_jar.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__net_sf_kxml_kxml2_2_3_0_jar.xml" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3_jar.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3_jar.xml" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__org_hamcrest_hamcrest_integration_1_3_jar.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__org_hamcrest_hamcrest_integration_1_3_jar.xml" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__org_hamcrest_hamcrest_library_1_3_jar.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/libraries/Gradle__org_hamcrest_hamcrest_library_1_3_jar.xml" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/modules.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/modules.xml" afterDir="false" />
       <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/workspace.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/.idea/workspace.xml" afterDir="false" />
       <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/app.iml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/app.iml" afterDir="false" />
-      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/src/main/java/com/qps/projettp1/ImageScripts.java" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/src/main/java/com/qps/projettp1/ImageScripts.java" afterDir="false" />
+      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/build.gradle" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/build.gradle" afterDir="false" />
+      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/src/main/java/com/qps/projettp1/Main2Activity.java" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/src/main/java/com/qps/projettp1/Main2Activity.java" afterDir="false" />
+      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/src/main/res/layout/activity_main2.xml" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/src/main/res/layout/activity_main2.xml" afterDir="false" />
+      <change beforePath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/build.gradle" beforeDir="false" afterPath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_activity_activity_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_activity_activity_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_annotation_annotation_1_1_0_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_annotation_annotation_1_1_0_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_1_1_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_resources_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_resources_1_1_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_common_2_1_0_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_common_2_1_0_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_runtime_2_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_runtime_2_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_collection_collection_1_1_0_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_collection_collection_1_1_0_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_1_1_3_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_1_1_3_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_solver_1_1_3_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_solver_1_1_3_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_core_core_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_core_core_1_1_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_cursoradapter_cursoradapter_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_cursoradapter_cursoradapter_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_customview_customview_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_customview_customview_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_drawerlayout_drawerlayout_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_drawerlayout_drawerlayout_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_fragment_fragment_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_fragment_fragment_1_1_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_interpolator_interpolator_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_interpolator_interpolator_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_common_2_1_0_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_common_2_1_0_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_2_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_2_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_core_2_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_core_2_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_runtime_2_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_runtime_2_1_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_2_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_2_1_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_loader_loader_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_loader_loader_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_savedstate_savedstate_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_savedstate_savedstate_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_espresso_espresso_core_3_2_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_espresso_espresso_core_3_2_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_espresso_espresso_idling_resource_3_2_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_espresso_espresso_idling_resource_3_2_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_monitor_1_2_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_monitor_1_2_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_runner_1_2_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_runner_1_2_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_1_1_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_animated_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_animated_1_1_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_versionedparcelable_versionedparcelable_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_versionedparcelable_versionedparcelable_1_1_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_viewpager_viewpager_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_viewpager_viewpager_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_code_findbugs_jsr305_2_0_1_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_code_findbugs_jsr305_2_0_1_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_javawriter_2_1_1_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_javawriter_2_1_1_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__javax_inject_javax_inject_1_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__javax_inject_javax_inject_1_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__junit_junit_4_12_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__junit_junit_4_12_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__net_sf_kxml_kxml2_2_3_0_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__net_sf_kxml_kxml2_2_3_0_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_integration_1_3_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_integration_1_3_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_library_1_3_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_library_1_3_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -131,11 +48,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file:///autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/src/main/java/com/qps/projettp1/Main2Activity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1350">
-              <caret line="117" column="51" lean-forward="true" selection-start-line="117" selection-start-column="51" selection-end-line="117" selection-end-column="51" />
+            <state relative-caret-position="497">
+              <caret line="996" column="25" selection-start-line="996" selection-start-column="25" selection-end-line="996" selection-end-column="25" />
               <folding>
                 <element signature="e#1873#2098#0" expanded="true" />
                 <element signature="e#2097#2098#0" expanded="true" />
@@ -149,8 +66,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file:///autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/src/main/res/layout/activity_main2.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="713">
-              <caret line="70" column="43" lean-forward="true" selection-start-line="70" selection-start-column="43" selection-end-line="70" selection-end-column="43" />
+            <state relative-caret-position="255">
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
             </state>
           </provider>
           <provider editor-type-id="android-designer2" />
@@ -166,11 +83,11 @@
           <provider editor-type-id="android-designer2" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file:///autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/src/main/java/com/qps/projettp1/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="195">
-              <caret line="19" column="52" lean-forward="true" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="52" />
+              <caret line="19" column="52" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -190,17 +107,25 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file:///autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="29" column="57" selection-start-line="29" selection-start-column="57" selection-end-line="29" selection-end-column="57" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file:///autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="18" column="42" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file:///autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/src/main/res/drawable/continue_background.xml">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file:///autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/src/main/res/drawable/gradient3.xml">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file:///autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/src/main/res/drawable/gradient_list.xml">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
@@ -208,7 +133,7 @@
         <entry file="file:///autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/src/main/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="300">
-              <caret line="20" column="19" lean-forward="true" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
+              <caret line="20" column="19" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
               <folding>
                 <element signature="e#421#439#0" expanded="true" />
               </folding>
@@ -237,7 +162,13 @@
     </replaceStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="SYNC" />
+    <option name="RECENT_GIT_ROOT_PATH" value="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement" value="master" />
+      </map>
+    </option>
   </component>
   <component name="HierarchyBrowserManager">
     <option name="SCOPE" value="This Class" />
@@ -262,10 +193,12 @@
         <option value="/autofs/unitytravail/travail/mpin003/L3/Android/Traitement-d-image/app/src/main/java/com/qps/projettp1/MainActivity.java" />
         <option value="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/src/main/res/layout/activity_main.xml" />
         <option value="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/src/main/AndroidManifest.xml" />
-        <option value="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/src/main/res/layout/activity_main2.xml" />
         <option value="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/src/main/res/drawable/button_background.xml" />
-        <option value="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/src/main/java/com/qps/projettp1/Main2Activity.java" />
         <option value="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/src/main/java/com/qps/projettp1/MainActivity.java" />
+        <option value="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/build.gradle" />
+        <option value="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/build.gradle" />
+        <option value="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/src/main/res/layout/activity_main2.xml" />
+        <option value="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/src/main/java/com/qps/projettp1/Main2Activity.java" />
       </list>
     </option>
   </component>
@@ -501,7 +434,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582291989222</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="création d'une deuxieme main activity + le design ( button, animation background...)">
+      <created>1583245165727</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1583245165727</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView">
@@ -531,7 +471,7 @@
       <window_info anchor="bottom" id="Logcat" order="2" weight="0.32827735" />
       <window_info anchor="bottom" id="Terminal" order="3" weight="0.32983795" />
       <window_info anchor="bottom" id="Event Log" order="4" sideWeight="0.50079554" side_tool="true" weight="0.32921812" />
-      <window_info anchor="bottom" id="Build" order="5" weight="0.2129895" />
+      <window_info anchor="bottom" id="Build" order="5" visible="true" weight="0.2129895" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32921812" />
       <window_info anchor="bottom" id="Android Profiler" order="7" sideWeight="0.4994664" weight="0.47778982" />
       <window_info anchor="bottom" id="Run" order="8" weight="0.33004114" />
@@ -562,7 +502,8 @@
     <MESSAGE value="Factorisation de fonctions" />
     <MESSAGE value="Plus de factorisation de fonctions" />
     <MESSAGE value="Déplacement de fonctions utilitaires dans Tools et clarification du code dans MainActivity." />
-    <option name="LAST_COMMIT_MESSAGE" value="Déplacement de fonctions utilitaires dans Tools et clarification du code dans MainActivity." />
+    <MESSAGE value="création d'une deuxieme main activity + le design ( button, animation background...)" />
+    <option name="LAST_COMMIT_MESSAGE" value="création d'une deuxieme main activity + le design ( button, animation background...)" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file:///autofs/unitytravail/travail/hwalle/ProjetTP1/app/src/main/res/layout/activity_main.xml" />
@@ -642,7 +583,7 @@
     <entry file="file:///autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
-          <caret line="20" column="19" lean-forward="true" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
+          <caret line="20" column="19" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
           <folding>
             <element signature="e#421#439#0" expanded="true" />
           </folding>
@@ -664,6 +605,13 @@
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
+    <entry file="file:///autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/src/main/java/com/qps/projettp1/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="19" column="52" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file:///autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/src/main/res/drawable/button_background.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
@@ -671,31 +619,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="57" selection-start-line="29" selection-start-column="57" selection-end-line="29" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="42" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file:///autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/src/main/res/layout/activity_main2.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="713">
-          <caret line="70" column="43" lean-forward="true" selection-start-line="70" selection-start-column="43" selection-end-line="70" selection-end-column="43" />
+        <state relative-caret-position="255">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file:///autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/src/main/java/com/qps/projettp1/Main2Activity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1350">
-          <caret line="117" column="51" lean-forward="true" selection-start-line="117" selection-start-column="51" selection-end-line="117" selection-end-column="51" />
+        <state relative-caret-position="497">
+          <caret line="996" column="25" selection-start-line="996" selection-start-column="25" selection-end-line="996" selection-end-column="25" />
           <folding>
             <element signature="e#1873#2098#0" expanded="true" />
             <element signature="e#2097#2098#0" expanded="true" />
             <element signature="e#2141#2385#0" expanded="true" />
             <element signature="e#2384#2385#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/src/main/java/com/qps/projettp1/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="19" column="52" lean-forward="true" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="52" />
         </state>
       </provider>
     </entry>

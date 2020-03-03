@@ -16,7 +16,7 @@
         android:layout_weight="10"
         android:orientation="vertical">
 
-        <ImageView
+        <com.github.chrisbanes.photoview.PhotoView
             android:id="@+id/image"
             android:layout_width="400dp"
             android:layout_height="400dp"
