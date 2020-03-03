@@ -18,7 +18,7 @@ public class ImageScripts extends AppCompatActivity {
 
     public void toGrayRs(Bitmap bp){
 
-        android.renderscript.RenderScript rs = android.renderscript.RenderScript.create(MainActivity.getContext());
+        android.renderscript.RenderScript rs = android.renderscript.RenderScript.create(Main2Activity.getContext());
 
         Allocation input = Allocation.createFromBitmap(rs,bp);
         Allocation output = Allocation.createTyped(rs,input.getType());
@@ -34,7 +34,7 @@ public class ImageScripts extends AppCompatActivity {
 
     }
     public void coloriseRS(Bitmap bp){
-        android.renderscript.RenderScript rs = android.renderscript.RenderScript.create(MainActivity.getContext());
+        android.renderscript.RenderScript rs = android.renderscript.RenderScript.create(Main2Activity.getContext());
 
         Allocation input = Allocation.createFromBitmap(rs,bp);
         Allocation output = Allocation.createTyped(rs,input.getType());
@@ -50,7 +50,7 @@ public class ImageScripts extends AppCompatActivity {
 
     }
     public void convolutionMoyenneRs(Bitmap bp){
-        android.renderscript.RenderScript rs = android.renderscript.RenderScript.create(MainActivity.getContext());
+        android.renderscript.RenderScript rs = android.renderscript.RenderScript.create(Main2Activity.getContext());
 
         Allocation input = Allocation.createFromBitmap(rs,bp);
         Allocation output = Allocation.createTyped(rs,input.getType());
@@ -68,7 +68,7 @@ public class ImageScripts extends AppCompatActivity {
     }
     public void convolution3x3Rs(Bitmap bp,float[] usedFiltre,boolean align){
         float div = 0;
-        android.renderscript.RenderScript rs = android.renderscript.RenderScript.create(MainActivity.getContext());
+        android.renderscript.RenderScript rs = android.renderscript.RenderScript.create(Main2Activity.getContext());
 
         Allocation input = Allocation.createFromBitmap(rs,bp);
         Allocation output = Allocation.createTyped(rs,input.getType());
