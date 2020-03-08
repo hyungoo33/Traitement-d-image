@@ -1,69 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:id="@+id/layout"
+    android:background="@drawable/gradient_list"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:layout_marginBottom="20dp"
-        android:layout_weight="10"
-        android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/image"
-            android:layout_width="400dp"
-            android:layout_height="400dp"
-            android:layout_gravity="center" />
-    </LinearLayout>
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/linearLayout"
+        android:layout_width="416dp"
+        android:layout_height="331dp"
         android:orientation="vertical"
-        android:layout_weight="20">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/reset_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="reset"
-            />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="394dp"
+            android:layout_height="94dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="88dp"
+            android:fontFamily="@font/dancing_script"
+            android:paddingStart="115dp"
+            android:paddingLeft="115dp"
+            android:paddingTop="30dp"
+
+
+            android:text="Thank you "
+            android:textSize="45dp"
+            android:textStyle="bold"
+            app:fontFamily="@font/dancing_script" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="393dp"
+            android:layout_height="81dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginEnd="13dp"
+            android:layout_marginRight="13dp"
+            android:layout_marginBottom="348dp"
+            android:fontFamily="@font/dancing_script"
+            android:paddingStart="59dp"
+            android:paddingLeft="59dp"
+            android:text="for choosing our Application to continue press the button below"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_weight="20">
 
-        <Button
-            android:id="@+id/load_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="load"
-            />
-        <Button
-            android:id="@+id/camera_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="camera"
-        />
+    <Button
+        android:id="@+id/buttoncontinue"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginLeft="104dp"
+        android:layout_marginTop="58dp"
+        android:layout_marginBottom="292dp"
+        android:layout_weight="1"
+        android:background="@drawable/continue_background"
+        android:onClick="toMainActivity"
+        android:text="Continue"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textStyle="italic"
+        android:typeface="serif"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-        <Button
-            android:id="@+id/buttonSave"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Save" />
-
-    </LinearLayout>
-</LinearLayout>
-
-
+</androidx.constraintlayout.widget.ConstraintLayout>
