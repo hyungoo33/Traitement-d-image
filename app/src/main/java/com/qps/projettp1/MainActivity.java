@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void toMainActivity(View view) {
+    public void toMainActivity2(View view) {
         Intent intent = new Intent(this,Main2Activity.class);
         startActivity(intent);
     }

@@ -16,11 +16,15 @@
         android:layout_weight="10"
         android:orientation="vertical">
 
+
         <com.github.chrisbanes.photoview.PhotoView
             android:id="@+id/image"
-            android:layout_width="400dp"
-            android:layout_height="400dp"
-            android:layout_gravity="center" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"/>
+
+
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,9 +35,9 @@
         <Button
             android:id="@+id/buttonSave"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="35dp"
             android:layout_gravity="center"
-            android:layout_margin="6dp"
+            android:layout_margin="1dp"
             android:background="@drawable/button_background"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@android:color/white"
@@ -43,21 +47,33 @@
         <Button
             android:id="@+id/camera_btn"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="35dp"
             android:layout_gravity="center"
-            android:layout_margin="6dp"
+            android:layout_margin="1dp"
             android:background="@drawable/button_background"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@android:color/white"
             android:textStyle="bold|italic"
             android:text="camera" />
+        <Button
+            android:id="@+id/draw_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_margin="1dp"
+            android:background="@drawable/button_background"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@android:color/white"
+            android:textStyle="bold|italic"
+            android:text="drawWithFinger"
+            android:onClick="toMainActivity3"/>
 
         <Button
             android:id="@+id/load_btn"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="35dp"
             android:layout_gravity="center"
-            android:layout_margin="6dp"
+            android:layout_margin="1dp"
             android:background="@drawable/button_background"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@android:color/white"
@@ -67,15 +83,16 @@
         <Button
             android:id="@+id/reset_btn"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="35dp"
             android:layout_gravity="center"
-            android:layout_margin="6dp"
+            android:layout_margin="1dp"
             android:background="@drawable/button_background"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@android:color/white"
             android:textStyle="bold|italic"
             android:text="reset"
             />
+
     </LinearLayout>
 </LinearLayout>
 

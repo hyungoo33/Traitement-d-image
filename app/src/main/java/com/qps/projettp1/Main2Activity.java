@@ -7,12 +7,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -20,9 +23,10 @@ import android.view.View.OnClickListener;
 
 import com.github.chrisbanes.photoview.PhotoView;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class Main2Activity extends AppCompatActivity {
+public class Main2Activity extends AppCompatActivity  {
 
     Bitmap bitmap;
     //ImageView iv;
@@ -33,13 +37,16 @@ public class Main2Activity extends AppCompatActivity {
     Button galleryButton;
     Button saveButton;
     Button buttonReset;
+    Button drawButton;
     int[] restoreImage;
     ImageScripts scripts = new ImageScripts();
+
 
     Tools tools = new Tools();
     BasicModifications basicModifications = new BasicModifications();
     Histogram histogram = new Histogram();
     private static Context context;
+
 
 
     @Override
@@ -53,9 +60,11 @@ public class Main2Activity extends AppCompatActivity {
         cameraButton = findViewById(R.id.camera_btn);
         galleryButton = findViewById(R.id.load_btn);
         saveButton = findViewById(R.id.buttonSave);
+        drawButton = findViewById(R.id.draw_btn);
         options.inSampleSize = 1;
         options.inMutable = true;
         bitmap = BitmapFactory.decodeResource(getResources(),idImage,options);
+
 
         buttonReset.setOnClickListener(new View.OnClickListener(){
 
@@ -68,7 +77,6 @@ public class Main2Activity extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
                 startActivityForResult(intent, 0);
             }
 
@@ -87,16 +95,16 @@ public class Main2Activity extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("jjjg");
-                System.out.println(bitmap.getWidth());
                 Save saveFile = new Save();
                 saveFile.SaveImage(Main2Activity.this,bitmap);
             }
 
 
         });
-        photoView.setImageBitmap(bitmap);
 
+
+
+        photoView.setImageBitmap(bitmap);
     }
 
 
@@ -111,10 +119,15 @@ public class Main2Activity extends AppCompatActivity {
                 e.printStackTrace();
             }
             photoView.setImageURI(imageUri);
+
         }
         if(requestCode == 0){
             bitmap = (Bitmap ) data.getExtras().get("data");
+            bitmap = Bitmap.createScaledBitmap(bitmap, 1080,1000,false);
+
             photoView.setImageBitmap(bitmap);
+
+
         }
          /**sauvgarde de l'image initiale */
          restoreImage = new int[bitmap.getWidth()*bitmap.getHeight()];
@@ -1008,6 +1021,31 @@ public class Main2Activity extends AppCompatActivity {
                 return super.onContextItemSelected(item);
         }
     }
+    /**
+     * Simuler un effet dessin avec les doigts*/
+
+
+    public void toMainActivity3(View view) {//draw With Fingers Button
+        try {
+            //Write file
+            String filename = "bitmap.jpg";
+            FileOutputStream stream = this.openFileOutput(filename, Context.MODE_PRIVATE);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+
+            //Cleanup
+            stream.close();
+            bitmap.recycle();
+
+            //Pop intent
+            Intent in1 = new Intent(this, Main3Activity.class);
+            in1.putExtra("image", filename);
+            startActivity(in1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
 
 

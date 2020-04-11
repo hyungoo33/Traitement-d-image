@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file:///autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/Traitement.iml" filepath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/Traitement.iml" />
-      <module fileurl="file:///autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/app.iml" filepath="/autofs/unityaccount/cremi/melbouyahyao/espaces/Traitement/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Traitement-d.iml" filepath="$PROJECT_DIR$/Traitement-d.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
 </project>

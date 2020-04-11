@@ -63,7 +63,7 @@
         android:layout_marginBottom="292dp"
         android:layout_weight="1"
         android:background="@drawable/continue_background"
-        android:onClick="toMainActivity"
+        android:onClick="toMainActivity2"
         android:text="Continue"
         android:textAlignment="center"
         android:textColor="@android:color/white"
