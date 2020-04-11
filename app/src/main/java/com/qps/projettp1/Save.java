@@ -28,7 +28,7 @@ import static androidx.core.app.ActivityCompat.requestPermissions;
 public class Save extends Activity {
     private Context context;
     private String nameOfFoledr = "/Mehdi_Image";
-    private String NameOfFile =  "MImageSave";
+    private String NameOfFile =  "MehdiImageSave";
 
     public void SaveImage(Context context , Bitmap bitmap){
 
@@ -40,13 +40,13 @@ public class Save extends Activity {
         if (!dir.exists()){
             dir.mkdirs();
         }
-        File file = new File(dir,NameOfFile+currentDateAndTime+".jpg");
+        File file = new File(Environment.getExternalStorageDirectory()+File.separator,NameOfFile+currentDateAndTime+".jpg");
         OutputStream outputStream = null;
         try{
             outputStream = new FileOutputStream(file);
             System.out.println(outputStream);
 
-            bitmap.compress(Bitmap.CompressFormat.JPEG,85,outputStream);
+            bitmap.compress(Bitmap.CompressFormat.JPEG,100,outputStream);
 
             outputStream.flush();
             MakeSureFileWasCreatedThenMakeAvailable(file);
@@ -61,7 +61,7 @@ public class Save extends Activity {
 
 
     private void UnableToSave() {
-        Toast.makeText(context,"Picture cannot to gallery",Toast.LENGTH_LONG).show();
+        Toast.makeText(context,"Vous devez activer le stockage dans Settings ",Toast.LENGTH_LONG).show();
     }
 
     private String getCurrentDateAndTime() {
