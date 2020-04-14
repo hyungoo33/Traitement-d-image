@@ -20,6 +20,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.view.View.OnClickListener;
+import android.widget.Toast;
 
 import com.github.chrisbanes.photoview.PhotoView;
 
@@ -70,7 +71,12 @@ public class Main2Activity extends AppCompatActivity  {
 
             @Override
             public void onClick(View v) {
-                bitmap.setPixels(restoreImage,0,bitmap.getWidth(),0,0,bitmap.getWidth(),bitmap.getHeight());
+                if (bitmap != null){
+                    bitmap.setPixels(restoreImage,0,bitmap.getWidth(),0,0,bitmap.getWidth(),bitmap.getHeight());
+                }
+                else {
+                    Toast.makeText(context,"Empty Picture",Toast.LENGTH_SHORT).show();
+                }
             }
         });
         cameraButton.setOnClickListener(new View.OnClickListener(){
@@ -96,7 +102,13 @@ public class Main2Activity extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
                 Save saveFile = new Save();
-                saveFile.SaveImage(Main2Activity.this,bitmap);
+                if(bitmap != null){
+                    saveFile.SaveImage(Main2Activity.this,bitmap);
+                }
+                else {
+                    Toast.makeText(context,"Empty Picture",Toast.LENGTH_LONG).show();
+
+                }
             }
 
 
@@ -1026,23 +1038,29 @@ public class Main2Activity extends AppCompatActivity  {
 
 
     public void toMainActivity3(View view) {//draw With Fingers Button
-        try {
-            //Write file
-            String filename = "bitmap.jpg";
-            FileOutputStream stream = this.openFileOutput(filename, Context.MODE_PRIVATE);
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-
-            //Cleanup
-            stream.close();
-            bitmap.recycle();
-
-            //Pop intent
-            Intent in1 = new Intent(this, Main3Activity.class);
-            in1.putExtra("image", filename);
-            startActivity(in1);
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (bitmap == null){
+            Toast.makeText(context,"Empty Picture",Toast.LENGTH_SHORT).show();
         }
+        else {
+            try {
+                //Write file
+                String filename = "bitmap.jpg";
+                FileOutputStream stream = this.openFileOutput(filename, Context.MODE_PRIVATE);
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+
+                //Cleanup
+                stream.close();
+                bitmap.recycle();
+
+                //Pop intent
+                Intent in1 = new Intent(this, Main3Activity.class);
+                in1.putExtra("image", filename);
+                startActivity(in1);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 
 
