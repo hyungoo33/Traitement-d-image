@@ -27,6 +27,7 @@ import java.io.FileNotFoundException;
 
 public class Main3Activity extends AppCompatActivity {
     //le dessin
+    int STROKE_WIDTH = 10;
     ImageView imageResult;
     Bitmap bitmapInitial;
     Bitmap bitmap;
@@ -47,7 +48,7 @@ public class Main3Activity extends AppCompatActivity {
         paintDraw = new Paint();
         paintDraw.setStyle(Paint.Style.FILL);
         paintDraw.setColor(Color.WHITE);
-        paintDraw.setStrokeWidth(10);
+        paintDraw.setStrokeWidth(STROKE_WIDTH);
         String filename = getIntent().getStringExtra("image");
         try {
             FileInputStream is = this.openFileInput(filename);
@@ -167,5 +168,15 @@ public class Main3Activity extends AppCompatActivity {
         bitmap = Bitmap.createBitmap(bitmapInitial);
         canvasMaster = new Canvas(bitmap);
         imageResult.setImageBitmap(bitmap);
+    }
+
+    public void decreaseStrokeWidth(View view) {
+        STROKE_WIDTH--;
+        paintDraw.setStrokeWidth(STROKE_WIDTH);
+    }
+
+    public void increaseStrokeWidth(View view) {
+        STROKE_WIDTH++;
+        paintDraw.setStrokeWidth(STROKE_WIDTH);
     }
 }

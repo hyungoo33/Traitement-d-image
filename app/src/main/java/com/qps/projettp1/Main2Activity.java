@@ -127,10 +127,12 @@ public class Main2Activity extends AppCompatActivity  {
             Uri imageUri = data.getData();
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(),imageUri);
+                bitmap = Bitmap.createScaledBitmap(bitmap, 1080,1000,false);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            photoView.setImageURI(imageUri);
+            photoView.setImageBitmap(bitmap);
+            //photoView.setImageURI(imageUri);
 
         }
         if(requestCode == 0){
