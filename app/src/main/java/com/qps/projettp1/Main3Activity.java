@@ -28,14 +28,11 @@ import java.io.FileNotFoundException;
 public class Main3Activity extends AppCompatActivity {
     //le dessin
     ImageView imageResult;
-
-
+    Bitmap bitmapInitial;
     Bitmap bitmap;
     Bitmap mutableBitmap;
     Canvas canvasMaster;
-
     int prvX, prvY;
-
     Paint paintDraw;
     BitmapDrawable drawable;
     Bitmap bitmapToStore;
@@ -65,8 +62,10 @@ public class Main3Activity extends AppCompatActivity {
 
         mutableBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
         canvasMaster = new Canvas(mutableBitmap);
+        bitmapInitial = Bitmap.createBitmap(bitmap);
 
         imageResult.setImageBitmap(mutableBitmap);
+
 
         imageResult.setOnTouchListener(new View.OnTouchListener() {
 
@@ -111,10 +110,8 @@ public class Main3Activity extends AppCompatActivity {
             //outside ImageView
             return;
         }else{
-
             float ratioWidth = (float)bm.getWidth()/(float)iv.getWidth();
             float ratioHeight = (float)bm.getHeight()/(float)iv.getHeight();
-
             canvasMaster.drawLine(
                     x0 * ratioWidth,
                     y0 * ratioHeight,
@@ -124,10 +121,8 @@ public class Main3Activity extends AppCompatActivity {
             imageResult.invalidate();
             drawable = (BitmapDrawable) imageResult.getDrawable();
             bitmapToStore = drawable.getBitmap();
-
         }
     }
-
 
     public void toMainActivity2(View view) {
         Intent intent = new Intent(this,Main2Activity.class);
@@ -167,5 +162,10 @@ public class Main3Activity extends AppCompatActivity {
                 return super.onContextItemSelected(item);
         }
         return true;
+    }
+    public void effacerDessin(View view) {
+        bitmap = Bitmap.createBitmap(bitmapInitial);
+        canvasMaster = new Canvas(bitmap);
+        imageResult.setImageBitmap(bitmap);
     }
 }

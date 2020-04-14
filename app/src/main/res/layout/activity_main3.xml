@@ -14,7 +14,7 @@
         <ImageView
             android:id="@+id/result"
             android:layout_width="match_parent"
-            android:layout_height="500dp"
+            android:layout_height="450dp"
             />
         <Button
             android:id="@+id/saveBtn"
@@ -31,6 +31,20 @@
             android:layout_centerHorizontal="true"
             />
         <Button
+            android:id="@+id/clearBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="EFFACER"
+            android:onClick="effacerDessin"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/button_background"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@android:color/white"
+            android:textStyle="bold|italic"
+            android:layout_below="@+id/saveBtn"
+            android:layout_centerHorizontal="true"
+            />
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:text="BACK"
@@ -40,7 +54,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@android:color/white"
             android:textStyle="bold|italic"
-            android:layout_below="@+id/saveBtn"
+            android:layout_below="@+id/clearBtn"
             android:layout_centerHorizontal="true"/>
     </RelativeLayout>
 
