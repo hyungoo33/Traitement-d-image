@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import com.github.chrisbanes.photoview.PhotoView;
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -65,8 +66,16 @@ public class Main2Activity extends AppCompatActivity  {
         options.inSampleSize = 1;
         options.inMutable = true;
         bitmap = BitmapFactory.decodeResource(getResources(),idImage,options);
-
-
+        String filename = getIntent().getStringExtra("bitmapMain3Activity.jpg");
+        try {
+            FileInputStream is = this.openFileInput(filename);
+            bitmap = BitmapFactory.decodeStream(is);
+            if (bitmap != null)
+                photoView.setImageBitmap(bitmap);
+            is.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         buttonReset.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -1063,6 +1072,12 @@ public class Main2Activity extends AppCompatActivity  {
             }
         }
 
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
     }
 
 

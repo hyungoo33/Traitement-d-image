@@ -3,6 +3,7 @@ package com.qps.projettp1;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -24,6 +25,8 @@ import android.widget.ImageView;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class Main3Activity extends AppCompatActivity {
     //le dessin
@@ -126,8 +129,25 @@ public class Main3Activity extends AppCompatActivity {
     }
 
     public void toMainActivity2(View view) {
-        Intent intent = new Intent(this,Main2Activity.class);
-        startActivity(intent);
+        String filename = "bitmapMain3Activity.jpg";
+        FileOutputStream stream = null;
+        try {
+            stream = this.openFileOutput(filename, Context.MODE_PRIVATE);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+
+        //Cleanup
+        try {
+            stream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        bitmap.recycle();
+        Intent in1 = new Intent(this, Main2Activity.class);
+        in1.putExtra("image", filename);
+        startActivity(in1);
     }
 
     public void saveImageGallery(View view) {
@@ -171,12 +191,19 @@ public class Main3Activity extends AppCompatActivity {
     }
 
     public void decreaseStrokeWidth(View view) {
-        STROKE_WIDTH--;
+        STROKE_WIDTH-=2;
         paintDraw.setStrokeWidth(STROKE_WIDTH);
     }
 
     public void increaseStrokeWidth(View view) {
-        STROKE_WIDTH++;
+        STROKE_WIDTH+=2;
         paintDraw.setStrokeWidth(STROKE_WIDTH);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this,Main2Activity.class);
+        startActivity(intent);
     }
 }
