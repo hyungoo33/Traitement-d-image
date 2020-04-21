@@ -1086,10 +1086,4 @@ public class Main2Activity extends AppCompatActivity  {
 
 
 
-    /*private View.OnClickListener clickListenerReset = new OnClickListener(){
-        @Override
-        public void onClick(View view) {
-
-        }
-    };*/
 }
